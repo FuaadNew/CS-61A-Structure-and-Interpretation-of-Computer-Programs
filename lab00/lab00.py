@@ -5,5 +5,17 @@ def twenty_twenty_four():
     >>> twenty_twenty_four()
     2024
     """
-    return ______
 
+    def g(x):
+        return x * 2
+    
+    def f(x):
+        return x - 1
+
+
+    return g(1000) + g(g(f(f(f(f(g(5)))))))
+
+
+if __name__ == "__main__":
+    print( twenty_twenty_four())
+    
