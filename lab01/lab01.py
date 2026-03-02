@@ -15,7 +15,7 @@ def digit(n, k):
         #n = n // 10
         #k-=1
     #return n % 10
-    
+
     return (n // pow(10, k) )% 10
 
 
@@ -34,7 +34,9 @@ def middle(a, b, c):
     >>> middle(30, 5, 40)
     30
     """
-    return ____
+    #return [num for num in [a,b,c] if num != min(a,b,c) and num != max(a,b,c)][0]
+
+    return a + b + c - (max(a,b,c) + min(a,b,c))
 
 
 def falling(n, k):
@@ -111,7 +113,8 @@ def double_eights(n):
 
 
 if __name__ == "__main__":
-    print(digit(3579, 2))
-    print(digit(3579, 0))
-    print(digit(3579, 10))
 
+   print(middle(3, 5, 4))
+   print(middle(30, 5, 4))
+   print(middle(3, 5, 40))
+   print(middle(30, 5, 40))
