@@ -8,7 +8,15 @@ def digit(n, k):
     >>> digit(3579, 10)
     0
     """
-    return ____
+   
+
+    #while k > 0:
+
+        #n = n // 10
+        #k-=1
+    #return n % 10
+    
+    return (n // pow(10, k) )% 10
 
 
 def middle(a, b, c):
@@ -99,4 +107,11 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
+
+
+
+if __name__ == "__main__":
+    print(digit(3579, 2))
+    print(digit(3579, 0))
+    print(digit(3579, 10))
 
