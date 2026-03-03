@@ -52,7 +52,17 @@ def falling(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
+    if k == 0:
+        return 1
+    res = n
+    while k > 1:
+        k-=1
+        res*= n - k
+    
+    return res
 
+
+    
 
 def divisible_by_k(n, k):
     """
@@ -113,8 +123,8 @@ def double_eights(n):
 
 
 if __name__ == "__main__":
-
-   print(middle(3, 5, 4))
-   print(middle(30, 5, 4))
-   print(middle(3, 5, 40))
-   print(middle(30, 5, 40))
+    print(falling(6, 3))
+    print(falling(4, 3))
+    print(falling(4, 1))
+    print(falling(4, 0))
+   
