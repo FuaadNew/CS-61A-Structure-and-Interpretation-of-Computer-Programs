@@ -111,6 +111,17 @@ def unique_digits(n):
     """
     "*** YOUR CODE HERE ***"
 
+    res = 0
+
+    while n:
+        lastDigit = n % 10
+        n = n // 10
+
+        if not has_digit(n, lastDigit):
+            res+=1
+    
+    return res
+
 
 
 def has_digit(n, k):
@@ -133,5 +144,6 @@ def has_digit(n, k):
     return False
 
 if __name__ == "__main__":
-    print(has_digit(100, 2))
-    print(has_digit(100, 0))
+    print(unique_digits(8675309))
+    print(unique_digits(13173131))
+    print(unique_digits(101))
