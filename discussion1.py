@@ -99,7 +99,39 @@ def is_prime(n):
 
 
 
+def unique_digits(n):
+    """Return the number of unique digits in positive integer n.
+
+    >>> unique_digits(8675309) # All are unique
+    7
+    >>> unique_digits(13173131) # 1, 3, and 7
+    3
+    >>> unique_digits(101) # 0 and 1
+    2
+    """
+    "*** YOUR CODE HERE ***"
+
+
+
+def has_digit(n, k):
+    """Returns whether k is a digit in n.
+
+    >>> has_digit(10, 1)
+    True
+    >>> has_digit(12, 7)
+    False
+    """
+    assert k >= 0 and k < 10
+    "*** YOUR CODE HERE ***"
+
+    while n:
+        lastDigit = n % 10
+        n = n // 10
+
+        if lastDigit == k:
+            return True
+    return False
+
 if __name__ == "__main__":
-    print(is_prime(10))
-    print(is_prime(7))
-    print(is_prime(1) )
+    print(has_digit(100, 2))
+    print(has_digit(100, 0))
