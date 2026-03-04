@@ -136,6 +136,8 @@ def race(x, y):
     assert y > x and y <= 2 * x, 'the hare must be fast but not too fast'
     tortoise, hare, minutes = 0, 0, 0
     while minutes == 0 or tortoise - hare:
+        print(tortoise, hare)
+        print("hello")
         tortoise += x
         if minutes % 10 < 5:
             hare += y
@@ -143,9 +145,31 @@ def race(x, y):
     return minutes
 
 
+def fizzbuzz(n):
+    """
+    >>> result = fizzbuzz(16)
+    1
+    2
+    fizz
+    4
+    buzz
+    fizz
+    7
+    8
+    fizz
+    buzz
+    11
+    fizz
+    13
+    14
+    fizzbuzz
+    16
+    >>> print(result)
+    None
+    """
+    "*** YOUR CODE HERE ***"
+
+
 if __name__ == "__main__":
-    print(falling(6, 3))
-    print(falling(4, 3))
-    print(falling(4, 1))
-    print(falling(4, 0))
-   
+
+    race(3, 5)
