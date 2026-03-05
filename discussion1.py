@@ -147,3 +147,46 @@ if __name__ == "__main__":
     print(unique_digits(8675309))
     print(unique_digits(13173131))
     print(unique_digits(101))
+
+
+
+
+
+#Q5: Bottles
+
+
+#bottles = 99
+#2	take = 1
+#3	
+#4	def pass_it(around):
+#5	    bottles = 98
+#6	    return take
+#7	
+#8	remaining = bottles - pass_it(bottles)
+#9	bottles = remaining
+
+#Answer the following questions with your group. Step through the diagram to check your answers.
+
+#1) What determines how many different frames appear in an environment diagram?
+#a) The number of functions defined in the code
+#b) The number of call expressions in the code
+#c) The number of return statements in the code
+#d) The number of times user-defined functions are called when running the code
+
+#D is correct.  
+
+#2) What happens to the return value of pass_it(bottles)?
+#a) It is used as the new value of remaining in the global frame
+#b) It is used as the new value of bottles in the global frame
+#c) It is used as the new value of pass_it in the global frame
+#d) None of the above
+
+#A seems correct, but to be more explicit the return value is subtracted from
+#bottles then stored as the remaining variable. 
+
+#3) What effect does the line bottles = 98 have on the global frame?
+#a) It temporarily changes the value bound to bottles in the global frame.
+#b) It permanently changes the value bound to bottles in the global frame.
+#c) It has no effect on the global frame.
+
+#C. It has no effect on the global frame. 
