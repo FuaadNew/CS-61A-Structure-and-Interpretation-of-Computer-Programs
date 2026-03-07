@@ -63,6 +63,15 @@ def sum_digits(y):
     6
     """
     "*** YOUR CODE HERE ***"
+    res = 0
+    while y > 0:
+        res+= y % 10
+        y = y //10
+    return res
+
+
 
 if __name__ == "__main__":
-    print(divisible_by_k(10, 2))
+    print(sum_digits(10))
+    print(sum_digits(4224))
+    print(sum_digits(1234567890))
