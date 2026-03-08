@@ -70,6 +70,13 @@ def largest_factor(n):
     """
     "*** YOUR CODE HERE ***"
 
+    test = n - 1
+
+    while test > 0:
+        if n % test == 0:
+            return test
+        test-=1
+
 
 def hailstone(n):
     """Print the hailstone sequence starting at n and return its
@@ -95,12 +102,10 @@ def hailstone(n):
 
 if __name__ == "__main__":
 
-    
-    print(two_of_three(1, 2, 3))
+    print(largest_factor(15)) # factors are 1, 3, 5
     #5
-    print(two_of_three(5, 3, 1))
-    #10
-    print(two_of_three(10, 2, 8))
-    #68
-    print(two_of_three(5, 5, 5))
-    #50
+    print(largest_factor(80)) # factors are 1, 2, 4, 5, 8, 10, 16, 20, 40
+    #40
+    print(largest_factor(13)) # factor is 1 since 13 is prime
+    #1
+    
