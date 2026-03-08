@@ -13,9 +13,9 @@ def a_plus_abs_b(a, b):
     3
     """
     if b < 0:
-        f = _____
+        f = sub
     else:
-        f = _____
+        f = add
     return f(a, b)
 
 def a_plus_abs_b_syntax_check():
@@ -89,3 +89,16 @@ def hailstone(n):
     """
     "*** YOUR CODE HERE ***"
 
+
+if __name__ == "__main__":
+
+    print(a_plus_abs_b(2, 3))
+    #5
+    print(a_plus_abs_b(2, -3))
+    #5
+    print(a_plus_abs_b(-1, 4))
+    #3
+    print(a_plus_abs_b(-1, -4))
+    #3
+    
+    
