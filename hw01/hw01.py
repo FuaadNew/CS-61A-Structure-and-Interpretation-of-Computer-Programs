@@ -42,7 +42,8 @@ def two_of_three(i, j, k):
     >>> two_of_three(5, 5, 5)
     50
     """
-    return _____
+   
+    return (min(i,j,k)) * (min(i,j,k)) + ((i + j + k) - max(i,j,k) - min(i,j,k)) * ((i + j + k) - max(i,j,k) - min(i,j,k))    
 
 def two_of_three_syntax_check():
     """Check that your two_of_three code consists of nothing but a return statement.
@@ -92,13 +93,12 @@ def hailstone(n):
 
 if __name__ == "__main__":
 
-    print(a_plus_abs_b(2, 3))
-    #5
-    print(a_plus_abs_b(2, -3))
-    #5
-    print(a_plus_abs_b(-1, 4))
-    #3
-    print(a_plus_abs_b(-1, -4))
-    #3
     
-    
+    print(two_of_three(1, 2, 3))
+    #5
+    print(two_of_three(5, 3, 1))
+    #10
+    print(two_of_three(10, 2, 8))
+    #68
+    print(two_of_three(5, 5, 5))
+    #50
