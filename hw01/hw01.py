@@ -43,7 +43,9 @@ def two_of_three(i, j, k):
     50
     """
    
-    return (min(i,j,k)) * (min(i,j,k)) + ((i + j + k) - max(i,j,k) - min(i,j,k)) * ((i + j + k) - max(i,j,k) - min(i,j,k))    
+    #return (min(i,j,k)) * (min(i,j,k)) + ((i + j + k) - max(i,j,k) - min(i,j,k)) * ((i + j + k) - max(i,j,k) - min(i,j,k)) 
+    # return min(i * i + j * j, i * i + k * k, j * j + k * k)
+    return i * i + j * j + k * k - max(i,j,k) * max(i,j,k)
 
 def two_of_three_syntax_check():
     """Check that your two_of_three code consists of nothing but a return statement.
