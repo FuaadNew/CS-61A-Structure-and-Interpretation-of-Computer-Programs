@@ -100,12 +100,30 @@ def hailstone(n):
     "*** YOUR CODE HERE ***"
 
 
+    steps = 1
+    print(n)
+    while n > 1:
+
+        if n % 2 == 0:
+            n = n // 2
+            print(n)
+        
+        else:
+            n = n * 3 + 1
+            print(n)
+        steps+=1
+    return steps
+
+
 if __name__ == "__main__":
 
-    print(largest_factor(15)) # factors are 1, 3, 5
+    a = hailstone(10)
+    #10
     #5
-    print(largest_factor(80)) # factors are 1, 2, 4, 5, 8, 10, 16, 20, 40
-    #40
-    print(largest_factor(13)) # factor is 1 since 13 is prime
+    #16
+    #8
+    #4
+    #2
     #1
-    
+    print(a)
+    #7
