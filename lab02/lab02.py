@@ -15,6 +15,9 @@ def composite_identity(f, g):
     """
     "*** YOUR CODE HERE ***"
 
+    return lambda x: f(g(x)) == g(f(x))
+
+
 
 def sum_digits(y):
     """Return the sum of the digits of non-negative integer y."""
@@ -102,3 +105,13 @@ def cycle(f1, f2, f3):
     """
     "*** YOUR CODE HERE ***"
 
+
+
+if __name__ == "__main__":
+    add_one = lambda x: x + 1        # adds one to x
+    square = lambda x: x**2          # squares x [returns x^2]
+    b1 = composite_identity(square, add_one)
+    print(b1(0))                           # (0 + 1) ** 2 == 0 ** 2 + 1
+    #True
+    print(b1(4))                           # (4 + 1) ** 2 != 4 ** 2 + 1
+    False
