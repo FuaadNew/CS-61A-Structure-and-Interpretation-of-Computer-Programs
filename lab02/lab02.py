@@ -68,7 +68,7 @@ def count_cond(condition):
         i = 1
         count = 0
         while i <= n:
-            if condition(i):
+            if condition(n,i):
                 count += 1
             i += 1
         return count
@@ -123,20 +123,20 @@ if __name__ == "__main__":
     count_fives = count_cond(lambda n, i: sum_digits(n * i) == 5)
     print(count_fives(10))   # 50 (10 * 5)
     #1
-    #count_fives(50)   # 50 (50 * 1), 500 (50 * 10), 1400 (50 * 28), 2300 (50 * 46)
+    print(count_fives(50))   # 50 (50 * 1), 500 (50 * 10), 1400 (50 * 28), 2300 (50 * 46)
     #4
 
-    #is_i_prime = lambda n, i: is_prime(i) # need to pass 2-argument function into count_cond
-    #count_primes = count_cond(is_i_prime)
-    #count_primes(2)    # 2
+    is_i_prime = lambda n, i: is_prime(i) # need to pass 2-argument function into count_cond
+    count_primes = count_cond(is_i_prime)
+    print(count_primes(2))    # 2
     #1
-    #count_primes(3)    # 2, 3
+    print(count_primes(3))    # 2, 3
     #2
-    #count_primes(4)    # 2, 3
+    print(count_primes(4))    # 2, 3
     #2
-    #count_primes(5)    # 2, 3, 5
+    print(count_primes(5))    # 2, 3, 5
     #3
-    #count_primes(20)   # 2, 3, 5, 7, 11, 13, 17, 19
+    print(count_primes(20))   # 2, 3, 5, 7, 11, 13, 17, 19
     #8
     
   
