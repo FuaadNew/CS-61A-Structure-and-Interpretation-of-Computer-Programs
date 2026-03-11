@@ -64,6 +64,17 @@ def count_cond(condition):
     """
     "*** YOUR CODE HERE ***"
 
+    def func(n):
+        i = 1
+        count = 0
+        while i <= n:
+            if condition(i):
+                count += 1
+            i += 1
+        return count
+    return func
+    
+
 
 def multiple(a, b):
     """Return the smallest number n that is a multiple of both a and b.
@@ -108,10 +119,24 @@ def cycle(f1, f2, f3):
 
 
 if __name__ == "__main__":
-    add_one = lambda x: x + 1        # adds one to x
-    square = lambda x: x**2          # squares x [returns x^2]
-    b1 = composite_identity(square, add_one)
-    print(b1(0))                           # (0 + 1) ** 2 == 0 ** 2 + 1
-    #True
-    print(b1(4))                           # (4 + 1) ** 2 != 4 ** 2 + 1
-    False
+
+    count_fives = count_cond(lambda n, i: sum_digits(n * i) == 5)
+    print(count_fives(10))   # 50 (10 * 5)
+    #1
+    #count_fives(50)   # 50 (50 * 1), 500 (50 * 10), 1400 (50 * 28), 2300 (50 * 46)
+    #4
+
+    #is_i_prime = lambda n, i: is_prime(i) # need to pass 2-argument function into count_cond
+    #count_primes = count_cond(is_i_prime)
+    #count_primes(2)    # 2
+    #1
+    #count_primes(3)    # 2, 3
+    #2
+    #count_primes(4)    # 2, 3
+    #2
+    #count_primes(5)    # 2, 3, 5
+    #3
+    #count_primes(20)   # 2, 3, 5, 7, 11, 13, 17, 19
+    #8
+    
+  
