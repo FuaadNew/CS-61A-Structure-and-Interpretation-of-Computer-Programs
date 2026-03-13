@@ -161,26 +161,7 @@ def find_digit(k):
     assert k > 0
     "*** YOUR CODE HERE ***"
 
-    def find(digit):
-        nonlocal k
-
-        while k > 1 and digit:
-            digit = digit // 10
-            k-=1
-
-
-        
-        if digit == 0 and k > 1:
-            return 0
-        
-        
-        return digit % 10
-
-    
-
-    return find
-
-
+    return lambda digit: digit // 10 ** (k-1) % 10
     
 
 
