@@ -184,26 +184,31 @@ def match_k(k):
     """
     def check(x):
         while x // (10 ** k) > 0:
-            if ____________________________:
-                return ____________________________
+            if x % 10 != x // (10 ** k) % 10:
+                return False
             x //= 10
-        ____________________________
-    ____________________________
+        return True
+    return check
 
 
 
 
 if __name__ == "__main__":
-   
+    print(match_k(2)(1010))
+    #True
+    print(match_k(2)(2010))
+    #False
+    print(match_k(1)(1010))
+    #False
+    print(match_k(1)(1))
+    #True
+    print(match_k(1)(2111111111111111))
+    #False
+    print(match_k(3)(123123))
+    #True
+    print(match_k(2)(123123))
+    #False
 
-    print(find_digit(2)(3456))
-    #5
-    print(find_digit(2)(5678))
-    #7
-    print(find_digit(1)(10))
-    #0
-    print(find_digit(4)(789))
-    #0
 
 
 
