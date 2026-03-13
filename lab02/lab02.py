@@ -161,24 +161,43 @@ def find_digit(k):
     assert k > 0
     "*** YOUR CODE HERE ***"
 
+    def find(digit):
+        nonlocal k
+
+        while k > 1 and digit:
+            digit = digit // 10
+            k-=1
+
+
+        
+        if digit == 0 and k > 1:
+            return 0
+        
+        
+        return digit % 10
+
+    
+
+    return find
+
+
     
 
 
 
 
 if __name__ == "__main__":
-    def is_even(x): # Even numbers have remainder 0 when divided by 2.
-        return x % 2 == 0
-    make_keeper(5)(is_even)
-    #2
-    #4
-    make_keeper(5)(lambda x: True)
-    #1
-    #2
-    #3
-    #4
+   
+
+    print(find_digit(2)(3456))
     #5
-    make_keeper(5)(lambda x: False)  # Nothing is printed
+    print(find_digit(2)(5678))
+    #7
+    print(find_digit(1)(10))
+    #0
+    print(find_digit(4)(789))
+    #0
+
 
 
 
