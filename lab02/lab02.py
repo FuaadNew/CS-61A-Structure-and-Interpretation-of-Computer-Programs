@@ -116,30 +116,6 @@ def cycle(f1, f2, f3):
     """
     "*** YOUR CODE HERE ***"
 
-
-
-if __name__ == "__main__":
-
-    count_fives = count_cond(lambda n, i: sum_digits(n * i) == 5)
-    print(count_fives(10))   # 50 (10 * 5)
-    #1
-    print(count_fives(50))   # 50 (50 * 1), 500 (50 * 10), 1400 (50 * 28), 2300 (50 * 46)
-    #4
-
-    is_i_prime = lambda n, i: is_prime(i) # need to pass 2-argument function into count_cond
-    count_primes = count_cond(is_i_prime)
-    print(count_primes(2))    # 2
-    #1
-    print(count_primes(3))    # 2, 3
-    #2
-    print(count_primes(4))    # 2, 3
-    #2
-    print(count_primes(5))    # 2, 3, 5
-    #3
-    print(count_primes(20))   # 2, 3, 5, 7, 11, 13, 17, 19
-    #8
-    
-
 def make_keeper(n):
     """Returns a function that takes one parameter cond and prints
     out all integers 1..i..n where calling cond(i) returns True.
@@ -159,7 +135,36 @@ def make_keeper(n):
     """
     "*** YOUR CODE HERE ***"
 
+    def conditional_print(cond):
+        
+        i = 1
+        while i <= n:
+            if cond(i):
+                print(i)
+            i+=1
+        return
+    return conditional_print
+
+
+    
 
 
 
-  result = (lambda x: 2 * (lambda x: 3)(4) * x)(5)
+
+if __name__ == "__main__":
+    def is_even(x): # Even numbers have remainder 0 when divided by 2.
+        return x % 2 == 0
+    make_keeper(5)(is_even)
+    #2
+    #4
+    make_keeper(5)(lambda x: True)
+    #1
+    #2
+    #3
+    #4
+    #5
+    make_keeper(5)(lambda x: False)  # Nothing is printed
+
+
+
+
