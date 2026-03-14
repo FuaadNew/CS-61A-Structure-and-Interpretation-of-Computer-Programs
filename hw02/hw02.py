@@ -33,6 +33,17 @@ def product(n, term):
     """
     "*** YOUR CODE HERE ***"
 
+    res = 1
+    i = 1
+
+    while i <= n:
+        res*=term(i)
+        i+=1
+    return res
+
+
+
+
 
 def accumulate(fuse, start, n, term):
     """Return the result of fusing together the first n terms in a sequence 
@@ -101,3 +112,21 @@ def make_repeater(f, n):
     """
     "*** YOUR CODE HERE ***"
 
+
+if __name__ == "__main__":
+    
+
+
+    print(product(3, identity))  # 1 * 2 * 3
+    #6
+    print(product(5, identity))  # 1 * 2 * 3 * 4 * 5
+    #120
+    print(product(3, square))    # 1^2 * 2^2 * 3^2
+    #36
+    print(product(5, square))    # 1^2 * 2^2 * 3^2 * 4^2 * 5^2
+    #14400
+    print(product(3, increment)) # (1+1) * (2+1) * (3+1)
+    #24
+    print(product(3, triple))    # 1*3 * 2*3 * 3*3
+    #162
+    
