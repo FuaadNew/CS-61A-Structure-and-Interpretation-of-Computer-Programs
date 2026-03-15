@@ -114,19 +114,19 @@ def make_repeater(f, n):
 
 
 if __name__ == "__main__":
-    
 
 
-    print(product(3, identity))  # 1 * 2 * 3
-    #6
-    print(product(5, identity))  # 1 * 2 * 3 * 4 * 5
-    #120
-    print(product(3, square))    # 1^2 * 2^2 * 3^2
-    #36
-    print(product(5, square))    # 1^2 * 2^2 * 3^2 * 4^2 * 5^2
-    #14400
-    print(product(3, increment)) # (1+1) * (2+1) * (3+1)
-    #24
-    print(product(3, triple))    # 1*3 * 2*3 * 3*3
-    #162
-    
+    print(accumulate(add, 0, 5, identity))  # 0 + 1 + 2 + 3 + 4 + 5
+    #15
+    print(accumulate(add, 11, 5, identity)) # 11 + 1 + 2 + 3 + 4 + 5
+    #26
+    print(accumulate(add, 11, 0, identity)) # 11 (fuse is never used)
+    #11
+    print(accumulate(add, 11, 3, square))   # 11 + 1^2 + 2^2 + 3^2
+    #25
+    print(accumulate(mul, 2, 3, square))    # 2 * 1^2 * 2^2 * 3^2
+    #72
+    # 2 + (1^2 + 1) + (2^2 + 1) + (3^2 + 1)
+    print(accumulate(lambda x, y: x + y + 1, 2, 3, square))
+    #19
+   
