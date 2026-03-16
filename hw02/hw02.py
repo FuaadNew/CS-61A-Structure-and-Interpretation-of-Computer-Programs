@@ -66,6 +66,14 @@ def accumulate(fuse, start, n, term):
     """
     "*** YOUR CODE HERE ***"
 
+    i = 1
+    res = start
+
+    while i <= n:
+        res = fuse(res, (term(i)))
+        i+=1
+    return res
+
 
 def summation_using_accumulate(n, term):
     """Returns the sum: term(1) + ... + term(n), using accumulate.
@@ -114,12 +122,12 @@ def make_repeater(f, n):
 
 
 if __name__ == "__main__":
+    
 
-
-    print(accumulate(add, 0, 5, identity))  # 0 + 1 + 2 + 3 + 4 + 5
+    print(accumulate(add, 0, 5, identity))
     #15
     print(accumulate(add, 11, 5, identity)) # 11 + 1 + 2 + 3 + 4 + 5
-    #26
+   #26
     print(accumulate(add, 11, 0, identity)) # 11 (fuse is never used)
     #11
     print(accumulate(add, 11, 3, square))   # 11 + 1^2 + 2^2 + 3^2
