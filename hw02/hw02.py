@@ -103,7 +103,7 @@ def product_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(product_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    return ____
+    return accumulate(mul, 1, n, term) 
 
 
 def make_repeater(f, n):
@@ -123,11 +123,11 @@ def make_repeater(f, n):
 
 
 if __name__ == "__main__":
-    
+    print(product_using_accumulate(4, square)) # square(1) * square(2) * square(3) * square()
+    576
+    print(product_using_accumulate(6, triple)) # triple(1) * triple(2) * ... * triple(5) * triple(6)
+    524880
 
   
-    print(summation_using_accumulate(5, square)) # square(1) + square(2) + ... + square(4) + square(5)
-    #55
-    print(summation_using_accumulate(5, triple)) # triple(1) + triple(2) + ... + triple(4) + triple(5)
-    #45
-    
+    #print(product_using_accumulate(4, square)) # square(1) * square(2) * square(3) * square()
+  
