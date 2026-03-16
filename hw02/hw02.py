@@ -87,7 +87,8 @@ def summation_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(summation_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    return ____
+   
+    return accumulate(add, 0, n, term) 
 
 
 def product_using_accumulate(n, term):
@@ -124,17 +125,9 @@ def make_repeater(f, n):
 if __name__ == "__main__":
     
 
-    print(accumulate(add, 0, 5, identity))
-    #15
-    print(accumulate(add, 11, 5, identity)) # 11 + 1 + 2 + 3 + 4 + 5
-   #26
-    print(accumulate(add, 11, 0, identity)) # 11 (fuse is never used)
-    #11
-    print(accumulate(add, 11, 3, square))   # 11 + 1^2 + 2^2 + 3^2
-    #25
-    print(accumulate(mul, 2, 3, square))    # 2 * 1^2 * 2^2 * 3^2
-    #72
-    # 2 + (1^2 + 1) + (2^2 + 1) + (3^2 + 1)
-    print(accumulate(lambda x, y: x + y + 1, 2, 3, square))
-    #19
-   
+  
+    print(summation_using_accumulate(5, square)) # square(1) + square(2) + ... + square(4) + square(5)
+    #55
+    print(summation_using_accumulate(5, triple)) # triple(1) + triple(2) + ... + triple(4) + triple(5)
+    #45
+    
