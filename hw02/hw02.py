@@ -31,7 +31,7 @@ def product(n, term):
     >>> product(3, triple)    # 1*3 * 2*3 * 3*3
     162
     """
-    "*** YOUR CODE HERE ***"
+   
 
     res = 1
     i = 1
@@ -64,7 +64,6 @@ def accumulate(fuse, start, n, term):
     >>> accumulate(lambda x, y: x + y + 1, 2, 3, square)
     19
     """
-    "*** YOUR CODE HERE ***"
 
     i = 1
     res = start
@@ -119,15 +118,8 @@ def make_repeater(f, n):
     >>> make_repeater(square, 3)(5) # square(square(square(5)))
     390625
     """
-    "*** YOUR CODE HERE ***"
+   "*** YOUR CODE HERE ***" 
 
 
 if __name__ == "__main__":
-    print(product_using_accumulate(4, square)) # square(1) * square(2) * square(3) * square()
-    576
-    print(product_using_accumulate(6, triple)) # triple(1) * triple(2) * ... * triple(5) * triple(6)
-    524880
-
-  
-    #print(product_using_accumulate(4, square)) # square(1) * square(2) * square(3) * square()
-  
+    
