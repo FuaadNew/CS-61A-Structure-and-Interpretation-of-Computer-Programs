@@ -118,8 +118,27 @@ def make_repeater(f, n):
     >>> make_repeater(square, 3)(5) # square(square(square(5)))
     390625
     """
-   "*** YOUR CODE HERE ***" 
 
+    def repeater(x):
+        i = 0
+
+        while i < n:
+            x = f(x)
+            i+=1
+        return x
+
+    return repeater
 
 if __name__ == "__main__":
+    
+    add_three = make_repeater(increment, 3)
+    print(add_three(5))
+    8
+    print(make_repeater(triple, 5)(1)) # 3 * (3 * (3 * (3 * (3 * 1))))
+    243
+    print(make_repeater(square, 2)(5)) # square(square(5))
+    625
+    print(make_repeater(square, 3)(5)) # square(square(square(5)))
+    390625
+    
     
