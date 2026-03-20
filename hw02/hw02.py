@@ -130,25 +130,38 @@ def make_repeater(f, n):
     return repeater
 
 def nearest_prime(n):
-"""Return the nearest prime number to n.
- In a tie, return the larger one. """
+    """Return the nearest prime number to n.
+    In a tie, return the larger one. 
 
- >>> nearest_prime(8)
- 7
- >>> nearest_prime(11)
- 11
- >>> nearest_prime(21)
- 23
+    >>> nearest_prime(8)
+    7
+    >>> nearest_prime(11)
+    11
+    >>> nearest_prime(21)
+    23
 
- """ ___
- while True:
- if ___: ___
- if ___:
- k = ék else:
- ___
- """
+    k = 5
+    while True:
+    if i: ___
+    if ___:
+    k = ék else:
+    ___
+    """
+
+    i = 5
+    res = 0
+    while i < n:
+        if i % (i - 1) == 0:
+            return i 
+        else:
+            i+=1
+        print(i)
+    return res
+
+
 
 if __name__ == "__main__":
-    print("Hello")
+   
+   print(nearest_prime(8))
     
     
