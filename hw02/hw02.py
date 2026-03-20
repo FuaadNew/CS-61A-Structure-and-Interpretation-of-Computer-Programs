@@ -164,34 +164,20 @@ def nearest_prime(n):
     else:
     ___
     """
-
-    before = 2
-
-    i = 2
-    while i <= n:
-        if is_prime(i):
-            before = i
-        i+=1
-    
-    after = n
-    i = n + 1
+    k = 0
 
     while True:
-        if is_prime(i):
-            after = i
-            break
-        i+=1
+
+        if is_prime(n + k):
+            return n + k
+        
+        if k > 0:
+            k = -k
+        else:
+            k = -k + 1
+
+
     
-    
-    if abs(n - before) <  abs(n - after):
-        return before
-    else:
-       return after
-
-
-
-
-
 if __name__ == "__main__":
    
    print(nearest_prime(8))
