@@ -299,3 +299,8 @@ def run(*args):
 
     if args.run_experiments:
         run_experiments()
+
+
+
+if __name__ == "__main__":
+    pass
