@@ -1,5 +1,5 @@
 # CS 61A Fall 2024 — Midterm 1 Solutions
-
+@FuaadNew
 ## Q1: What Would Python Display? (8.0 pts)
 
 ```python
@@ -153,3 +153,7 @@ def sum_range(p, q, term):
 def unshift(shifted):
     return lambda g: shift(-shifted(lambda x: x)(0), g)
 ```
+
+
+
+
