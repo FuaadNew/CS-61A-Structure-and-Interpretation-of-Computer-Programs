@@ -26,12 +26,14 @@ def skip_factorial(n):
     >>> skip_factorial(8) # 8 * 6 * 4 * 2
     384
     """
-    if ___:
-        return ___
+    if n <= 0:
+        return 1
     else:
         return n * skip_factorial(n - 2)
 
 
 
 if __name__ == '__main__':
-    swipe(2837)
+    print(skip_factorial(5))
+    print(skip_factorial(8))
+
