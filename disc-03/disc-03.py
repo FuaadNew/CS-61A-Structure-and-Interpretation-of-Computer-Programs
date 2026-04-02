@@ -13,9 +13,10 @@ def swipe(n):
     if n < 10:
         print(n)
     else:
+       
        print(n%10)
        swipe(n//10)
-
+       print(n%10)
 
 
 if __name__ == '__main__':
