@@ -44,9 +44,30 @@ def is_prime(n):
     """
     "*** YOUR CODE HERE ***"
 
+    def f(i):   
+        ''' return Fakse if a number between 2 and n - 1 divides n evenly,
+             else return True '''
+        if i == n:
+            return True
+        if n % i == 0:
+            return False
+        return f(i + 1)
+    
+    return f(2)
+        
 
+
+
+
+    #while num > 1:
+     #   if n % num == 0:
+      #      return False
+       # num-=1
+    #return True
+    
 
 if __name__ == '__main__':
-    print(skip_factorial(5))
-    print(skip_factorial(8))
+   print(is_prime(2))
+   print(is_prime(16))
+   print(is_prime(521))
 
