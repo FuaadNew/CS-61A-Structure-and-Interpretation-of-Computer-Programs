@@ -54,6 +54,11 @@ def is_prime(n):
         return f(i + 1)
     
     return f(2)
+
+
+
+
+
         
 def hailstone(n):
     """Print out the hailstone sequence starting at n, 
@@ -80,13 +85,18 @@ def hailstone(n):
         return odd(n)
 
 def even(n):
-    return ____
+   
+    return 1 + hailstone(n // 2)
 
 def odd(n):
-    "*** YOUR CODE HERE ***"
+    if n == 1:
+        return 1
+    return 1 + hailstone(3 * n + 1)
 
 
 
 
 if __name__ == '__main__':
-    pass
+    a = hailstone(10)
+    print(a)
+    
