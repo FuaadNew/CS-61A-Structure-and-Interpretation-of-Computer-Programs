@@ -55,19 +55,38 @@ def is_prime(n):
     
     return f(2)
         
+def hailstone(n):
+    """Print out the hailstone sequence starting at n, 
+    and return the number of elements in the sequence.
+    >>> a = hailstone(10)
+    10
+    5
+    16
+    8
+    4
+    2
+    1
+    >>> a
+    7
+    >>> b = hailstone(1)
+    1
+    >>> b
+    1
+    """
+    print(n)
+    if n % 2 == 0:
+        return even(n)
+    else:
+        return odd(n)
+
+def even(n):
+    return ____
+
+def odd(n):
+    "*** YOUR CODE HERE ***"
 
 
 
-
-    #while num > 1:
-     #   if n % num == 0:
-      #      return False
-       # num-=1
-    #return True
-    
 
 if __name__ == '__main__':
-   print(is_prime(2))
-   print(is_prime(16))
-   print(is_prime(521))
-
+    pass
