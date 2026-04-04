@@ -115,6 +115,13 @@ def sevens(n, k):
         if i == n:
             return who
         "*** YOUR CODE HERE ***"
+        print(who, i)
+        if has_seven(i):
+            print("WHO PLUS NEGATION", who, direction, who + (-direction))
+            return f(i + 1, who +  (-direction), -direction)
+        else:
+            return f(i + 1, (who % k ) + direction, direction)
+
     return f(1, 1, 1)
 
 def has_seven(n):
@@ -127,5 +134,17 @@ def has_seven(n):
 
 
 if __name__ == '__main__':
+    #print(sevens(2, 5))
+    #2
+    #print(sevens(6, 5))
+    #1
+    #print(sevens(7, 5))
+    #2
+    #print(sevens(8, 5))
+    #1
+    print(sevens(9, 5))
+    #5
+    #print(sevens(18, 5))
+    #2
     
     
