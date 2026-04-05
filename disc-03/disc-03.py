@@ -94,7 +94,6 @@ def odd(n):
     return 1 + hailstone(3 * n + 1)
 
 
-
 def sevens(n, k):
     """Return the (clockwise) position of who says n among k players.
 
@@ -114,14 +113,11 @@ def sevens(n, k):
     def f(i, who, direction):
         if i == n:
             return who
-        "*** YOUR CODE HERE ***"
-        print(who, i)
-        if has_seven(i):
-            print("WHO PLUS NEGATION", who, direction, who + (-direction))
-            return f(i + 1, who +  (-direction), -direction)
-        else:
-            return f(i + 1, (who % k ) + direction, direction)
-
+        if i % 7 == 0 or (has_seven(i)):
+            direction = -direction
+        if (who + direction) % k == 0:
+            return f(i + 1, k, direction)
+        return f(i + 1, (who + direction) % k, direction)
     return f(1, 1, 1)
 
 def has_seven(n):
@@ -133,18 +129,19 @@ def has_seven(n):
         return has_seven(n // 10)
 
 
+
 if __name__ == '__main__':
-    #print(sevens(2, 5))
+    print(sevens(2, 5))
     #2
-    #print(sevens(6, 5))
+    print(sevens(6, 5))
     #1
-    #print(sevens(7, 5))
+    print(sevens(7, 5))
     #2
-    #print(sevens(8, 5))
+    print(sevens(8, 5))
     #1
     print(sevens(9, 5))
     #5
-    #print(sevens(18, 5))
+    print(sevens(18, 5))
     #2
     
     
