@@ -130,6 +130,33 @@ def has_seven(n):
 
 
 
+# write any code you want
+from karel.stanfordkarel import *
+
+def turn_around():
+   turn_left()
+   turn_left()
+   
+   
+   
+def move_middle():
+   
+   if front_is_clear():
+      move()
+      if front_is_clear():
+         move()
+         move_middle()
+         move()
+      else:
+         turn_around()
+
+   turn_around()
+ 
+def main():
+   # your code here...
+   move_middle()
+   
+  
 if __name__ == '__main__':
     print(sevens(2, 5))
     #2
