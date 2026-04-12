@@ -67,7 +67,9 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls >= 0, 'Cannot roll a negative number of dice in take_turn.'
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+    
+    return boar_brawl(player_score, opponent_score) if num_rolls == 0 else roll_dice(num_rolls, dice)
+    
     # END PROBLEM 3
 
 
@@ -318,18 +320,15 @@ def run(*args):
 
 
 if __name__ == '__main__':
-   
-    print(boar_brawl(21, 46))   # expect 9
-    print(boar_brawl(52, 79))   # expect 15
-    print(boar_brawl(0, 0))     # expect 1
-    print(boar_brawl(0, 5))    # expect 1
-    print(boar_brawl(2, 5))    # expect 6
-    print(boar_brawl(7, 2))    # expect 21
-    print(boar_brawl(6, 10))   # expect 15
-    print(boar_brawl(16, 27))  # expect 12
-    print(boar_brawl(39, 71))  # expect 6
-    print(boar_brawl(72, 29))  # expect 1
-    print(boar_brawl(82, 115)) # expect 3  (scores may be ≥ 100)
-    print(boar_brawl(99, 121)) # expect 21
-    print(boar_brawl(42, 61))  # expect 12
-    print(boar_brawl(727, 939))  # expect 12
+    print(take_turn(2, 7, 27, make_test_dice(4, 5, 1)))   # expect 9  (4+5)
+    print(take_turn(3, 15, 9, make_test_dice(4, 6, 1)))  # expect 1  (Sow Sad)
+    print(take_turn(0, 12, 41))                           # expect 6  (Boar Brawl; default dice unused)
+    print(take_turn(0, 37, 15))                           # expect 18
+    print(take_turn(0, 35, 21))                           # expect 9
+    print(take_turn(2, 15, 25, make_test_dice(6)))        # expect 12
+    print(take_turn(9, 2, 3, make_test_dice(4)))          # expect 36
+    print(take_turn(7, 4, 11, make_test_dice(4)))         # expect 28
+    print(take_turn(8, 3, 15, make_test_dice(5)))         # expect 40
+    print(take_turn(1, 3, 6, make_test_dice(5, 1)))       # expect 5
+    print(take_turn(2, 3, 4, make_test_dice(5, 1)))       # expect 1  (Sow Sad)
+    
