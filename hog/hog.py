@@ -41,9 +41,17 @@ def boar_brawl(player_score, opponent_score):
 
     """
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
-    # END PROBLEM 2
 
+
+    tens_digit_opp = opponent_score % 100 // 10
+    ones_digit_player = player_score % 10
+    
+    zero_score = 3 * abs(tens_digit_opp - ones_digit_player)
+    return zero_score if (zero_score > 1) else 1
+
+    
+    # END PROBLEM 2
+  
 
 def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     """Return the points scored on a turn rolling NUM_ROLLS dice when the
@@ -310,7 +318,18 @@ def run(*args):
 
 
 if __name__ == '__main__':
-    fixed_dice = make_test_dice(3, 4)
-    print(roll_dice(2, fixed_dice))
-
-    
+   
+    print(boar_brawl(21, 46))   # expect 9
+    print(boar_brawl(52, 79))   # expect 15
+    print(boar_brawl(0, 0))     # expect 1
+    print(boar_brawl(0, 5))    # expect 1
+    print(boar_brawl(2, 5))    # expect 6
+    print(boar_brawl(7, 2))    # expect 21
+    print(boar_brawl(6, 10))   # expect 15
+    print(boar_brawl(16, 27))  # expect 12
+    print(boar_brawl(39, 71))  # expect 6
+    print(boar_brawl(72, 29))  # expect 1
+    print(boar_brawl(82, 115)) # expect 3  (scores may be ≥ 100)
+    print(boar_brawl(99, 121)) # expect 21
+    print(boar_brawl(42, 61))  # expect 12
+    print(boar_brawl(727, 939))  # expect 12
