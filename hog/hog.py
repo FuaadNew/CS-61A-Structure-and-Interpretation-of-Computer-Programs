@@ -108,8 +108,22 @@ def num_factors(n):
 def sus_points(score):
     """Return the new score of a player taking into account the Sus Fuss rule."""
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+   
+    def next_prime(num):
+        candidate = num + 1
+        while True:
+            if is_prime(candidate):
+                return candidate
+            candidate+=1
+
+
+    factor_cnt = num_factors(score)
+    if factor_cnt in [3,4]:
+        return next_prime(score)
+    return score
     # END PROBLEM 4
+
+    
 
 def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     """Return the total score of a player who starts their turn with
@@ -328,13 +342,12 @@ def run(*args):
 
 
 if __name__ == '__main__':
-    print(num_factors(1))    # expect 1
-    print(num_factors(2))    # expect 2
-    print(num_factors(3))    # expect 2
-    print(num_factors(9))    # expect 3
-    print(num_factors(28))   # expect 6
-    print(num_factors(64))   # expect 7
-    print(num_factors(72))   # expect 12
-    print(num_factors(97))   # expect 2
-    print(num_factors(99))   # expect 6
-        
+        print(sus_points(1))     # expect 1   (1 factor → not sus)
+        print(sus_points(21))    # expect 23  (4 factors → next prime)
+        print(sus_points(25))    # expect 29  (3 factors → next prime)
+        print(sus_points(62))    # expect 67  (4 factors → next prime)
+        print(sus_points(64))    # expect 64  (7 factors → not sus)
+        print(sus_points(67))    # expect 67  (prime → not sus)
+        print(sus_points(75))    # expect 75  (6 factors → not sus)
+        print(sus_points(86))    # expect 89  (4 factors → next prime)
+        print(sus_points(100))   # expect 100 (9 factors → not sus)
