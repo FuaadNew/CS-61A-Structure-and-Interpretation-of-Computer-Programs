@@ -95,6 +95,14 @@ def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    i = n
+    cnt = 0
+    while i > 0:
+        if n % i == 0:
+            cnt+=1
+        i-=1
+    return cnt
+        
     # END PROBLEM 4
 
 def sus_points(score):
@@ -320,15 +328,13 @@ def run(*args):
 
 
 if __name__ == '__main__':
-    print(take_turn(2, 7, 27, make_test_dice(4, 5, 1)))   # expect 9  (4+5)
-    print(take_turn(3, 15, 9, make_test_dice(4, 6, 1)))  # expect 1  (Sow Sad)
-    print(take_turn(0, 12, 41))                           # expect 6  (Boar Brawl; default dice unused)
-    print(take_turn(0, 37, 15))                           # expect 18
-    print(take_turn(0, 35, 21))                           # expect 9
-    print(take_turn(2, 15, 25, make_test_dice(6)))        # expect 12
-    print(take_turn(9, 2, 3, make_test_dice(4)))          # expect 36
-    print(take_turn(7, 4, 11, make_test_dice(4)))         # expect 28
-    print(take_turn(8, 3, 15, make_test_dice(5)))         # expect 40
-    print(take_turn(1, 3, 6, make_test_dice(5, 1)))       # expect 5
-    print(take_turn(2, 3, 4, make_test_dice(5, 1)))       # expect 1  (Sow Sad)
-    
+    print(num_factors(1))    # expect 1
+    print(num_factors(2))    # expect 2
+    print(num_factors(3))    # expect 2
+    print(num_factors(9))    # expect 3
+    print(num_factors(28))   # expect 6
+    print(num_factors(64))   # expect 7
+    print(num_factors(72))   # expect 12
+    print(num_factors(97))   # expect 2
+    print(num_factors(99))   # expect 6
+        
