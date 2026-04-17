@@ -130,12 +130,16 @@ def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     PLAYER_SCORE and then rolls NUM_ROLLS DICE, *including* Sus Fuss.
     """
     # BEGIN PROBLEM 4
+
+    
+
+    #print(sus_update(2, 10, 20, make_test_dice(3, 3))) # expect 16 (10+6=16, not sus)
     if num_rolls == 0:
-        return boar_brawl(player_score, opponent_score)
-    while num_rolls > 0:
-        player_score+= roll_dice(num_rolls, dice)
-        player_score = sus_points(player_score)
-        num_rolls-=1
+        return sus_points(player_score + boar_brawl(player_score, opponent_score))
+
+
+    player_score+= roll_dice(num_rolls, dice)
+    player_score = sus_points(player_score)
     return player_score
        
     
@@ -353,10 +357,10 @@ if __name__ == '__main__':
         from dice import make_test_dice
 
         # sus_update tests
-        #print(sus_update(1, 0, 0, make_test_dice(4)))    # expect 5   (0+4=4, sus → next prime 5)
-        #print(sus_update(1, 0, 0, make_test_dice(5)))    # expect 5   (0+5=5, not sus)
-        #print(sus_update(1, 14, 0, make_test_dice(7)))   # expect 23  (14+7=21, sus → next prime 23)
-        #print(sus_update(0, 53, 60))                     # expect 67  (boar brawl: 53+9=62, sus → next prime 67)
-        #print(sus_update(1, 0, 0, make_test_dice(1)))    # expect 1   (sow sad: 0+1=1, not sus)
+        print(sus_update(1, 0, 0, make_test_dice(4)))    # expect 5   (0+4=4, sus → next prime 5)
+        print(sus_update(1, 0, 0, make_test_dice(5)))    # expect 5   (0+5=5, not sus)
+        print(sus_update(1, 14, 0, make_test_dice(7)))   # expect 23  (14+7=21, sus → next prime 23)
+        print(sus_update(0, 53, 60))                     # expect 67  (boar brawl: 53+9=62, sus → next prime 67)
+        print(sus_update(1, 0, 0, make_test_dice(1)))    # expect 1   (sow sad: 0+1=1, not sus)
         print(sus_update(2, 10, 20, make_test_dice(3, 3))) # expect 16 (10+6=16, not sus)
-        #print(sus_update(1, 72, 0, make_test_dice(14)))  # expect 89  (72+14=86, sus → next prime 89)
+        print(sus_update(1, 72, 0, make_test_dice(14)))  # expect 89  (72+14=86, sus → next prime 89)
