@@ -133,14 +133,9 @@ def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
 
     
 
-    #print(sus_update(2, 10, 20, make_test_dice(3, 3))) # expect 16 (10+6=16, not sus)
-    if num_rolls == 0:
-        return sus_points(player_score + boar_brawl(player_score, opponent_score))
-
-
-    player_score+= roll_dice(num_rolls, dice)
-    player_score = sus_points(player_score)
-    return player_score
+    
+    score = player_score + take_turn(num_rolls, player_score, opponent_score, dice)
+    return sus_points(score)
        
     
     # END PROBLEM 4
