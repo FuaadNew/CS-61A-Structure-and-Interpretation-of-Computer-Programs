@@ -94,7 +94,7 @@ def is_prime(n):
 def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+   
     i = n
     cnt = 0
     while i > 0:
@@ -177,7 +177,22 @@ def play(strategy0, strategy1, update,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+
+    while True:
+        if who == 0:
+            score0 = update(strategy0(score0, score1), score0, score1, dice)
+            if score0 >= goal:
+                break
+            who = 1
+        if who == 1:
+            score1 = update(strategy1(score1, score0), score1, score0, dice)
+            if score1 >= goal:
+                break
+            who = 0
+
     # END PROBLEM 5
+
+
     return score0, score1
 
 
@@ -351,11 +366,25 @@ def run(*args):
 if __name__ == '__main__':
         from dice import make_test_dice
 
-        # sus_update tests
-        print(sus_update(1, 0, 0, make_test_dice(4)))    # expect 5   (0+4=4, sus → next prime 5)
-        print(sus_update(1, 0, 0, make_test_dice(5)))    # expect 5   (0+5=5, not sus)
-        print(sus_update(1, 14, 0, make_test_dice(7)))   # expect 23  (14+7=21, sus → next prime 23)
-        print(sus_update(0, 53, 60))                     # expect 67  (boar brawl: 53+9=62, sus → next prime 67)
-        print(sus_update(1, 0, 0, make_test_dice(1)))    # expect 1   (sow sad: 0+1=1, not sus)
-        print(sus_update(2, 10, 20, make_test_dice(3, 3))) # expect 16 (10+6=16, not sus)
-        print(sus_update(1, 72, 0, make_test_dice(14)))  # expect 89  (72+14=86, sus → next prime 89)
+        # play tests
+        # Player 0 wins by rolling 5 each turn; deterministic dice cycles 6s
+        # so each turn scores 30 pts; player 0 goes first and hits 100 first
+        print(play(always_roll_5, always_roll_5, simple_update,
+                   dice=make_test_dice(6)))                        # expect (120, 90) — p0 hits goal first
+
+        # Player 1 wins: p0 always rolls 0 (boar brawl gives low pts), p1 always rolls 5
+        print(play(lambda s, o: 0, always_roll_5, simple_update,
+                   dice=make_test_dice(6)))                        # expect p1 score >= 100, p0 score < 100
+
+        # Short game with goal=10: p0 rolls 1 die of 6 each turn
+        print(play(lambda s, o: 1, lambda s, o: 1, simple_update,
+                   goal=10, dice=make_test_dice(6)))               # expect (12, 6) — p0 reaches 12 first (6->12), p1 at 6
+
+        # Sus Fuss kicks in: p0 starts at 0, rolls 1 die of 4 → score=4 (sus→5)
+        print(play(lambda s, o: 1, lambda s, o: 0, sus_update,
+                   goal=10, dice=make_test_dice(4)))               # expect p0 score >= 10 with sus applied
+
+        # Starting scores provided: p0 already at 99, rolls 1 die of 2 → wins immediately
+        print(play(lambda s, o: 1, lambda s, o: 1, simple_update,
+                   score0=99, score1=50, goal=100,
+                   dice=make_test_dice(2)))                        # expect (101, 50) — p0 wins on first turn
