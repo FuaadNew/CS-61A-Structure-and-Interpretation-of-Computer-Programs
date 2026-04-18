@@ -216,10 +216,12 @@ def always_roll(n):
     """
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
-    def strategy(x,y):
+    def strategy(player_score,opp_score):
         return n
     "*** YOUR CODE HERE ***"
     return strategy
+
+
     # END PROBLEM 6
 
 
@@ -251,6 +253,21 @@ def is_always_roll(strategy, goal=GOAL):
     """
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+
+    reference = strategy(0,0)
+    for player_score in range(goal):
+        for opp_score in range(goal):
+            if strategy(player_score, opp_score) != reference:
+                return False
+    return True
+
+
+
+
+
+
+
+
     # END PROBLEM 7
 
 
@@ -369,36 +386,6 @@ def run(*args):
 if __name__ == '__main__':
         from dice import make_test_dice
 
-        # ---- Problem 6: always_roll ----
-        # always_roll(n) must return a FUNCTION (a strategy), not a number.
-        # That returned function takes (score, opponent_score) and always returns n.
+    
 
-        print("Problem 6: always_roll")
-
-        # Basic: always_roll(3) should return 3 no matter what scores are passed.
-        strat3 = always_roll(3)
-        print(strat3(10, 20))                       # expect: 3
-        print(strat3(0, 0))                         # expect: 3
-        print(strat3(99, 99))                       # expect: 3
-
-        # Edge: n = 0 (rolling 0 dice is allowed — triggers Boar Brawl later).
-        strat0 = always_roll(0)
-        print(always_roll(0)(99, 99))               # expect: 0
-        print(strat0(50, 75))                       # expect: 0
-
-        # Edge: n = 10 (max dice allowed by take_turn).
-        print(always_roll(10)(0, 0))                # expect: 10
-
-        # Confirm it's a higher-order function: result must be callable.
-        print(callable(always_roll(5)))             # expect: True
-
-        # Confirm it behaves exactly like always_roll_5 for n=5.
-        s5 = always_roll(5)
-        print(s5(0, 0) == always_roll_5(0, 0))      # expect: True
-        print(s5(42, 17) == always_roll_5(42, 17))  # expect: True
-
-        # Each call to always_roll(n) should produce an independent strategy
-        # (not strictly required, but good to sanity-check closure behavior).
-        print(always_roll(2) is always_roll(2))     # expect: False
-        print(always_roll(2)(0, 0))                 # expect: 2
-        print(always_roll(7)(0, 0))                 # expect: 7
+      
