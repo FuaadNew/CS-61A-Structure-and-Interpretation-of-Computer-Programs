@@ -216,7 +216,10 @@ def always_roll(n):
     """
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
+    def strategy(x,y):
+        return n
     "*** YOUR CODE HERE ***"
+    return strategy
     # END PROBLEM 6
 
 
@@ -366,25 +369,36 @@ def run(*args):
 if __name__ == '__main__':
         from dice import make_test_dice
 
-        # play tests
-        # Player 0 wins by rolling 5 each turn; deterministic dice cycles 6s
-        # so each turn scores 30 pts; player 0 goes first and hits 100 first
-        print(play(always_roll_5, always_roll_5, simple_update,
-                   dice=make_test_dice(6)))                        # expect (120, 90) — p0 hits goal first
+        # ---- Problem 6: always_roll ----
+        # always_roll(n) must return a FUNCTION (a strategy), not a number.
+        # That returned function takes (score, opponent_score) and always returns n.
 
-        # Player 1 wins: p0 always rolls 0 (boar brawl gives low pts), p1 always rolls 5
-        print(play(lambda s, o: 0, always_roll_5, simple_update,
-                   dice=make_test_dice(6)))                        # expect p1 score >= 100, p0 score < 100
+        print("Problem 6: always_roll")
 
-        # Short game with goal=10: p0 rolls 1 die of 6 each turn
-        print(play(lambda s, o: 1, lambda s, o: 1, simple_update,
-                   goal=10, dice=make_test_dice(6)))               # expect (12, 6) — p0 reaches 12 first (6->12), p1 at 6
+        # Basic: always_roll(3) should return 3 no matter what scores are passed.
+        strat3 = always_roll(3)
+        print(strat3(10, 20))                       # expect: 3
+        print(strat3(0, 0))                         # expect: 3
+        print(strat3(99, 99))                       # expect: 3
 
-        # Sus Fuss kicks in: p0 starts at 0, rolls 1 die of 4 → score=4 (sus→5)
-        print(play(lambda s, o: 1, lambda s, o: 0, sus_update,
-                   goal=10, dice=make_test_dice(4)))               # expect p0 score >= 10 with sus applied
+        # Edge: n = 0 (rolling 0 dice is allowed — triggers Boar Brawl later).
+        strat0 = always_roll(0)
+        print(always_roll(0)(99, 99))               # expect: 0
+        print(strat0(50, 75))                       # expect: 0
 
-        # Starting scores provided: p0 already at 99, rolls 1 die of 2 → wins immediately
-        print(play(lambda s, o: 1, lambda s, o: 1, simple_update,
-                   score0=99, score1=50, goal=100,
-                   dice=make_test_dice(2)))                        # expect (101, 50) — p0 wins on first turn
+        # Edge: n = 10 (max dice allowed by take_turn).
+        print(always_roll(10)(0, 0))                # expect: 10
+
+        # Confirm it's a higher-order function: result must be callable.
+        print(callable(always_roll(5)))             # expect: True
+
+        # Confirm it behaves exactly like always_roll_5 for n=5.
+        s5 = always_roll(5)
+        print(s5(0, 0) == always_roll_5(0, 0))      # expect: True
+        print(s5(42, 17) == always_roll_5(42, 17))  # expect: True
+
+        # Each call to always_roll(n) should produce an independent strategy
+        # (not strictly required, but good to sanity-check closure behavior).
+        print(always_roll(2) is always_roll(2))     # expect: False
+        print(always_roll(2)(0, 0))                 # expect: 2
+        print(always_roll(7)(0, 0))                 # expect: 7
