@@ -283,8 +283,14 @@ def make_averaged(original_function, times_called=1000):
     3.0
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
+    def averaged(*args):
+        res = 0
+        for i in range(times_called):
+            res+= original_function(*args)
+        return res / times_called
+    return averaged
     # END PROBLEM 8
+
 
 
 def max_scoring_num_rolls(dice=six_sided, times_called=1000):
@@ -386,6 +392,85 @@ def run(*args):
 if __name__ == '__main__':
         from dice import make_test_dice
 
-    
+        # ---- Problem 8: make_averaged ----
+        print("Problem 8: make_averaged")
 
-      
+        # Test 1: average a zero-arg dice function.
+        # dice cycles: 3, 1, 5, 6, 3, 1, 5, 6, ...
+        # Over 1000 calls, each of the 4 values appears 250 times.
+        # Average = (3 + 1 + 5 + 6) / 4 = 3.75
+        dice1 = make_test_dice(3, 1, 5, 6)
+        averaged_dice1 = make_averaged(dice1, 1000)
+        print(averaged_dice1())                                 # expect: 3.75
+
+        # Test 2: average a two-arg function (roll_dice).
+        # dice cycles: 3, 1, 5, 6, ...
+        # Each call to roll_dice(2, dice) consumes 2 rolls:
+        #   call 1: (3, 1) -> contains a 1 -> Sow Sad -> 1
+        #   call 2: (5, 6) -> no 1 -> 11
+        #   call 3: (3, 1) -> 1
+        #   call 4: (5, 6) -> 11
+        # Over 1000 calls: 500 ones and 500 elevens.
+        # Average = (500*1 + 500*11) / 1000 = 6.0
+        dice2 = make_test_dice(3, 1, 5, 6)
+        averaged_roll = make_averaged(roll_dice, 1000)
+        print(averaged_roll(2, dice2))                          # expect: 6.0
+
+        # Test 3: doctest example.
+        # dice cycles: 4, 2, 5, 1, 4, 2, 5, 1, ...
+        # roll_dice(1, dice) -> 40 calls -> 10 of each value.
+        # 10 of them are 1's -> average includes those 1s directly.
+        # Sum = 10*4 + 10*2 + 10*5 + 10*1 = 120; avg = 120/40 = 3.0
+        dice3 = make_test_dice(4, 2, 5, 1)
+        averaged_dice3 = make_averaged(roll_dice, 40)
+        print(averaged_dice3(1, dice3))                         # expect: 3.0
+
+        # Test 4: huge deterministic range.
+        # hundred_dice cycles 1..99. 5 full cycles = 495 calls.
+        # Sum of 1..99 = 4950; across 5 cycles = 24750; avg = 24750/495 = 50.0
+        hundred_range = range(1, 100)
+        hundred_dice = make_test_dice(*hundred_range)
+        averaged_hundred = make_averaged(hundred_dice, 5 * len(hundred_range))
+        print(averaged_hundred())                               # expect: 50.0
+        print(averaged_hundred())                               # expect: 50.0 (fresh state)
+
+        # Test 5: times_called = 1 (edge: single sample).
+        # dice cycles: 3, 1, 5, 6. First roll_dice(2, dice) -> (3, 1) -> Sow Sad -> 1.
+        # One sample -> average = 1.0
+        dice4 = make_test_dice(3, 1, 5, 6)
+        averaged_single = make_averaged(roll_dice, 1)
+        print(averaged_single(2, dice4))                        # expect: 1.0
+
+        # Test 6: times_called = 5 (odd number; tests exact sum / count).
+        # dice cycles: 3, 1, 5, 6. Each roll_dice(2, ...) consumes 2 dice.
+        # call 1 (3,1) -> 1
+        # call 2 (5,6) -> 11
+        # call 3 (3,1) -> 1
+        # call 4 (5,6) -> 11
+        # call 5 (3,1) -> 1
+        # Sum = 25; avg = 25 / 5 = 5.0
+        dice5 = make_test_dice(3, 1, 5, 6)
+        averaged_five = make_averaged(roll_dice, 5)
+        print(averaged_five(2, dice5))                          # expect: 5.0
+
+        # Test 7: make_averaged must return a FUNCTION (higher-order output).
+        print(callable(make_averaged(roll_dice, 10)))           # expect: True
+
+        # Test 8: same wrapper should be reusable with different *args.
+        # (Each call uses its own dice, so results are independent.)
+        wrapper = make_averaged(roll_dice, 40)
+        diceA = make_test_dice(4, 2, 5, 1)
+        diceB = make_test_dice(6, 6, 6, 6)
+        print(wrapper(1, diceA))                                # expect: 3.0
+        print(wrapper(1, diceB))                                # expect: 6.0
+
+        # Test 9: default times_called (1000) is used when omitted.
+        # dice cycles: 2, 4. 1000 calls of the dice -> 500 twos + 500 fours.
+        # avg = (500*2 + 500*4) / 1000 = 3.0
+        dice6 = make_test_dice(2, 4)
+        averaged_default = make_averaged(dice6)
+        print(averaged_default())                               # expect: 3.0
+
+        # Test 10: result type must be a float (division, not floor division).
+        dice7 = make_test_dice(3)
+        print(type(make_averaged(dice7, 10)()).__name__)        # expect: float
