@@ -302,7 +302,15 @@ def max_scoring_num_rolls(dice=six_sided, times_called=1000):
     1
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
+    res = 0
+    res_score = 0
+    average_roll_dice = make_averaged(roll_dice,times_called)
+    for num_rolls in range(1,11):
+        candidate = average_roll_dice(num_rolls,dice )
+        if candidate > res_score:
+            res_score = candidate
+            res = num_rolls
+    return res
     # END PROBLEM 9
 
 
@@ -392,85 +400,57 @@ def run(*args):
 if __name__ == '__main__':
         from dice import make_test_dice
 
-        # ---- Problem 8: make_averaged ----
-        print("Problem 8: make_averaged")
+        # ---- Problem 9: max_scoring_num_rolls ----
+        # Finds the value of num_rolls in 1..10 whose roll_dice average is
+        # highest. On ties, return the LOWER num_rolls.
+        print("Problem 9: max_scoring_num_rolls")
 
-        # Test 1: average a zero-arg dice function.
-        # dice cycles: 3, 1, 5, 6, 3, 1, 5, 6, ...
-        # Over 1000 calls, each of the 4 values appears 250 times.
-        # Average = (3 + 1 + 5 + 6) / 4 = 3.75
-        dice1 = make_test_dice(3, 1, 5, 6)
-        averaged_dice1 = make_averaged(dice1, 1000)
-        print(averaged_dice1())                                 # expect: 3.75
+        # Test 1: dice always returns 3 (no 1s, no Sow Sad).
+        # avg(n) = 3n, strictly increasing; max at n=10.
+        dice_3 = make_test_dice(3)
+        print(max_scoring_num_rolls(dice_3, times_called=1000))          # expect: 10
 
-        # Test 2: average a two-arg function (roll_dice).
-        # dice cycles: 3, 1, 5, 6, ...
-        # Each call to roll_dice(2, dice) consumes 2 rolls:
-        #   call 1: (3, 1) -> contains a 1 -> Sow Sad -> 1
-        #   call 2: (5, 6) -> no 1 -> 11
-        #   call 3: (3, 1) -> 1
-        #   call 4: (5, 6) -> 11
-        # Over 1000 calls: 500 ones and 500 elevens.
-        # Average = (500*1 + 500*11) / 1000 = 6.0
-        dice2 = make_test_dice(3, 1, 5, 6)
-        averaged_roll = make_averaged(roll_dice, 1000)
-        print(averaged_roll(2, dice2))                          # expect: 6.0
+        # Test 2: dice always returns 2 (no Sow Sad).
+        # avg(n) = 2n, strictly increasing; max at n=10.
+        dice_2 = make_test_dice(2)
+        print(max_scoring_num_rolls(dice_2, times_called=1000))          # expect: 10
 
-        # Test 3: doctest example.
-        # dice cycles: 4, 2, 5, 1, 4, 2, 5, 1, ...
-        # roll_dice(1, dice) -> 40 calls -> 10 of each value.
-        # 10 of them are 1's -> average includes those 1s directly.
-        # Sum = 10*4 + 10*2 + 10*5 + 10*1 = 120; avg = 120/40 = 3.0
-        dice3 = make_test_dice(4, 2, 5, 1)
-        averaged_dice3 = make_averaged(roll_dice, 40)
-        print(averaged_dice3(1, dice3))                         # expect: 3.0
+        # Test 3: dice always returns 1 (EVERY n triggers Sow Sad → 1).
+        # All averages tie at 1.0. On a tie, return the LOWEST num_rolls.
+        dice_1 = make_test_dice(1)
+        print(max_scoring_num_rolls(dice_1, times_called=1000))          # expect: 1
 
-        # Test 4: huge deterministic range.
-        # hundred_dice cycles 1..99. 5 full cycles = 495 calls.
-        # Sum of 1..99 = 4950; across 5 cycles = 24750; avg = 24750/495 = 50.0
-        hundred_range = range(1, 100)
-        hundred_dice = make_test_dice(*hundred_range)
-        averaged_hundred = make_averaged(hundred_dice, 5 * len(hundred_range))
-        print(averaged_hundred())                               # expect: 50.0
-        print(averaged_hundred())                               # expect: 50.0 (fresh state)
+        # Test 4: dice alternates 1, 2, 1, 2, ...
+        # n=1 avg = 1.5 (rolls of 1 -> 1, rolls of 2 -> 2, alternating).
+        # n>=2 every call contains a 1 -> Sow Sad -> 1. So n=1 wins.
+        dice_12 = make_test_dice(1, 2)
+        print(max_scoring_num_rolls(dice_12, times_called=1000))         # expect: 1
 
-        # Test 5: times_called = 1 (edge: single sample).
-        # dice cycles: 3, 1, 5, 6. First roll_dice(2, dice) -> (3, 1) -> Sow Sad -> 1.
-        # One sample -> average = 1.0
-        dice4 = make_test_dice(3, 1, 5, 6)
-        averaged_single = make_averaged(roll_dice, 1)
-        print(averaged_single(2, dice4))                        # expect: 1.0
+        # Test 5: dice cycle (1, 2, 2, 2, 2, 2, 2, 2) length 8.
+        # n=4 averages 4.5 (best); n=8 always has a 1 -> avg 1.
+        dice_one_seven = make_test_dice(1, 2, 2, 2, 2, 2, 2, 2)
+        print(max_scoring_num_rolls(dice_one_seven, times_called=1000))  # expect: 4
 
-        # Test 6: times_called = 5 (odd number; tests exact sum / count).
-        # dice cycles: 3, 1, 5, 6. Each roll_dice(2, ...) consumes 2 dice.
-        # call 1 (3,1) -> 1
-        # call 2 (5,6) -> 11
-        # call 3 (3,1) -> 1
-        # call 4 (5,6) -> 11
-        # call 5 (3,1) -> 1
-        # Sum = 25; avg = 25 / 5 = 5.0
-        dice5 = make_test_dice(3, 1, 5, 6)
-        averaged_five = make_averaged(roll_dice, 5)
-        print(averaged_five(2, dice5))                          # expect: 5.0
+        # Test 6: dice = 100 twos followed by 100 ones. times_called=1.
+        # First 55 positions consumed by n=1..10 sum-of-1..10=55, all 2s.
+        # Answer: n=10 (roll_dice returns 20, the highest sample).
+        dice_100_2s = make_test_dice(*([2] * 100 + [1] * 100))
+        print(max_scoring_num_rolls(dice_100_2s, times_called=1))        # expect: 10
 
-        # Test 7: make_averaged must return a FUNCTION (higher-order output).
-        print(callable(make_averaged(roll_dice, 10)))           # expect: True
+        # Test 7: dice sweeps 1..5, times_called=1000.
+        # Best n is 3 (avg 5.8 across the 5-length cycle).
+        dice_sweep5 = make_test_dice(1, 2, 3, 4, 5)
+        print(max_scoring_num_rolls(dice_sweep5, times_called=1000))     # expect: 3
 
-        # Test 8: same wrapper should be reusable with different *args.
-        # (Each call uses its own dice, so results are independent.)
-        wrapper = make_averaged(roll_dice, 40)
-        diceA = make_test_dice(4, 2, 5, 1)
-        diceB = make_test_dice(6, 6, 6, 6)
-        print(wrapper(1, diceA))                                # expect: 3.0
-        print(wrapper(1, diceB))                                # expect: 6.0
+        # Test 8: dice sweeps 6,5,4,3,2,1; times_called=1.
+        # n=4 gives one sample 6+5+4+3=18 (no 1), which is the max.
+        # (n=5,6,... all hit the 1 in the cycle and Sow Sad -> 1.)
+        dice_sweep6 = make_test_dice(6, 5, 4, 3, 2, 1)
+        print(max_scoring_num_rolls(dice_sweep6, times_called=1))        # expect: 4
 
-        # Test 9: default times_called (1000) is used when omitted.
-        # dice cycles: 2, 4. 1000 calls of the dice -> 500 twos + 500 fours.
-        # avg = (500*2 + 500*4) / 1000 = 3.0
-        dice6 = make_test_dice(2, 4)
-        averaged_default = make_averaged(dice6)
-        print(averaged_default())                               # expect: 3.0
-
-        # Test 10: result type must be a float (division, not floor division).
-        dice7 = make_test_dice(3)
-        print(type(make_averaged(dice7, 10)()).__name__)        # expect: float
+        # Test 9: dice = 55 twos then (1, 2) repeating; times_called=1.
+        # n=1..10 consume positions 0..54, all 2s. Best is n=10, score 20.
+        # Important: this test verifies you don't sample extra dice beyond
+        # what times_called dictates (i.e. no peeking into the 1s region).
+        dice_55_2s = make_test_dice(*([2] * 55 + [1, 2] * 500))
+        print(max_scoring_num_rolls(dice_55_2s, times_called=1))         # expect: 10
