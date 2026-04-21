@@ -404,4 +404,17 @@ def run(*args):
 
 
 if __name__ == '__main__':
-        from dice import make_test_dice
+        
+
+        def cascade(n):
+            if n <= 10:
+                print(n)
+                return
+            
+            print(n)
+            cascade(n//10)
+            print(n)
+            
+        
+        cascade(1234)
+
