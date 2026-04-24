@@ -405,13 +405,22 @@ def run(*args):
 
 if __name__ == '__main__':
 
-    def inverse_cascade(n):
-        print(n//10)
+    def cascade(n):
         if n < 10:
             print(n)
         else:
-            inverse_cascade(n//10)
+            cascade(n//10)
             print(n)
 
-    
+
+    def inverse_cascade(n):
+       
+        if n >= 10:
+            print(n)
+            inverse_cascade(n//10)
+
+        else:
+            print(n)
+
+    cascade(1234)
     inverse_cascade(1234)
