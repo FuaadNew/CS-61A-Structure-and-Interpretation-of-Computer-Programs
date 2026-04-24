@@ -404,5 +404,14 @@ def run(*args):
 
 
 if __name__ == '__main__':
-        
 
+    def inverse_cascade(n):
+        print(n//10)
+        if n < 10:
+            print(n)
+        else:
+            inverse_cascade(n//10)
+            print(n)
+
+    
+    inverse_cascade(1234)
