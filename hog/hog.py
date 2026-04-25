@@ -404,3 +404,34 @@ def run(*args):
 
 
 if __name__ == '__main__':
+
+    def count_partitions(n,m):
+        res = 0
+
+        #if sum == n  and nums == m
+        #increment i
+        def dfs(partitions, part_sum, i):
+            if len(partitions) > m:
+                return
+            if part_sum > n:
+                return
+            if i > n:
+                return 
+
+            if len(partitions) == m and part_sum == n:
+                res+=1
+                return
+            partitions.append(i)
+            dfs(partitions, part_sum + i, i + 1)
+            partitions.pop()
+            dfs(partitions, part_sum, i + 1)
+        
+        dfs([], 0, 0)
+
+        return res
+        
+
+
+
+
+
