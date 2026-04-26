@@ -411,23 +411,23 @@ if __name__ == '__main__':
     def count_partitions(goal_sum, n):
         res = [0]
         def dfs(partitions, i, cur_sum):
-            if cur_sum == goal_sum:
-                print(sum(partitions))
-                res[0]+=1
-                return
             if cur_sum > goal_sum:
                 return
             if i > n:
                 return
+            if cur_sum == goal_sum:
+                print(partitions[:])
+                res[0]+=1
+                return
 
             #reuse i
-            partitions.append
-            dfs(partitions, i, cur_sum + i)
+            partitions.append(i)
+            dfs(partitions[:], i, cur_sum + i)
 
             #continue i
-            dfs(partitions,i + 1, cur_sum + i)
+            dfs(partitions[:],i + 1, cur_sum + i)
 
         dfs([], 1,0)
         return res[0]
     
-    print(count_partitions(6,4))
+    count_partitions(6,4)
