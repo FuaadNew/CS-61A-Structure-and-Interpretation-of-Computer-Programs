@@ -408,31 +408,15 @@ if __name__ == '__main__':
     #add up to 6, parititions of numbers up to 4
     visit = set()
     def count_partitions(goal_sum, n):
-        res = [0]
-        def dfs(partitions, i, cur_sum):
-            if cur_sum > goal_sum:
-                return
+        def dfs(cur_sum, i):
             if i > n:
-                return
+                return 0
+            if cur_sum > goal_sum:
+                return 0
             if cur_sum == goal_sum:
-                if tuple(partitions) in visit:
-                    return
-                visit.add(tuple(partitions))
-                print(partitions[:])
-                res[0]+=1
-                return
+                return 1
+            return dfs(cur_sum, i + 1) + dfs(cur_sum + i, i)
+        dfs(0,0)
 
-            #reuse i
-            partitions.append(i)
-            dfs(partitions[:], i, cur_sum + i)
-
-            #continue i
-            partitions.pop()
-            dfs(partitions[:],i + 1, cur_sum)
-
-        for i in range(1,n + 1):
-            dfs([], i,0)
-        return res[0]
-    
     print(count_partitions(6,4))
    
