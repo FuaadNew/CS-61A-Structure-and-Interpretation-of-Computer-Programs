@@ -406,7 +406,6 @@ def run(*args):
 if __name__ == '__main__':
 
     #add up to 6, parititions of numbers up to 4
-    visit = set()
     def count_partitions(goal_sum, n):
         def dfs(cur_sum, i):
             if i > n:
@@ -416,7 +415,7 @@ if __name__ == '__main__':
             if cur_sum == goal_sum:
                 return 1
             return dfs(cur_sum, i + 1) + dfs(cur_sum + i, i)
-        dfs(0,0)
+        return dfs(0,1)
 
     print(count_partitions(6,4))
    
