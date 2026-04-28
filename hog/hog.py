@@ -424,10 +424,11 @@ if __name__ == '__main__':
 
             #reuse i
             partitions.append(i)
-            dfs(partitions[:], i, cur_sum)
+            dfs(partitions[:], i, cur_sum + i)
 
             #continue i
-            dfs(partitions[:],i + 1, cur_sum + i)
+            partitions.pop()
+            dfs(partitions[:],i + 1, cur_sum)
 
         for i in range(1,n + 1):
             dfs([], i,0)
