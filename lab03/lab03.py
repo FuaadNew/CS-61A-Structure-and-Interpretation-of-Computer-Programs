@@ -35,7 +35,8 @@ def close(s, k):
     """
     count = 0
     for i in range(len(s)):  # Use a range to loop over indices
-        "*** YOUR CODE HERE ***"
+        if i - k <=  s[i] <= i + k:
+            count+=1
     return count
 
 
@@ -50,7 +51,7 @@ def close_list(s, k):
     >>> close_list(t, 2)  # 2, 3, 4, and 5 are all within 2 of their index
     [2, 4, 3, 5]
     """
-    return [___ for i in range(len(s)) if ___]
+    return [s[i] for i in range(len(s)) if abs(i - s[i]) <= k]
 
 
 from math import sqrt
