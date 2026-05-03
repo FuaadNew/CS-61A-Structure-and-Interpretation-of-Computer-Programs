@@ -67,7 +67,8 @@ def squares(s):
     >>> squares(seq)
     []
     """
-    return [___ for n in s if ___]
+    return [int(sqrt(n)) for n in s if sqrt(n) == round(sqrt(n))]
+    
 
 
 def double_eights(n):
@@ -127,3 +128,8 @@ def make_onion(f, g):
             return can_reach(____, ____, limit - 1) or can_reach(____, ____, limit - 1)
     return can_reach
 
+
+if __name__ =='__main__':
+    seq = [500, 30]
+    squares(seq)
+    
