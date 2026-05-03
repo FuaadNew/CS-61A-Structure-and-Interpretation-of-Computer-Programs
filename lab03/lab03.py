@@ -94,6 +94,16 @@ def double_eights(n):
     """
     "*** YOUR CODE HERE ***"
 
+    def check(x):
+        if x // 10 == 0 or x // 100 == 0:
+            print("Hit")
+            return False
+        if x // 10 == 8 and x // 100 == 8:
+            return True
+        print(x)
+        return check(x// 10)
+
+    return check(n)
 
 def make_onion(f, g):
     """Return a function can_reach(x, y, limit) that returns
@@ -130,6 +140,4 @@ def make_onion(f, g):
 
 
 if __name__ =='__main__':
-    seq = [500, 30]
-    squares(seq)
-    
+    print(double_eights(1288))
