@@ -93,17 +93,11 @@ def double_eights(n):
     True
     """
     "*** YOUR CODE HERE ***"
-
-    def check(x):
-        if x // 10 == 0 or x // 100 == 0:
-            print("Hit")
-            return False
-        if x // 10 == 8 and x // 100 == 8:
-            return True
-        print(x)
-        return check(x// 10)
-
-    return check(n)
+    if n < 10:
+        return False
+    if n % 100 == 88:
+        return True
+    return double_eights(n//10)
 
 def make_onion(f, g):
     """Return a function can_reach(x, y, limit) that returns
@@ -140,4 +134,5 @@ def make_onion(f, g):
 
 
 if __name__ =='__main__':
-    print(double_eights(1288))
+    pass
+    
