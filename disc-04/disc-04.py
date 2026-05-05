@@ -15,18 +15,26 @@ def paths(m, n):
     """
     "*** YOUR CODE HERE ***"
 
-    def dfs(r,c):
-        if r > m or c > n:
-            return 0
-        if r == m and c == n:
-            return 1
+    if n == 1 or m == 1:
+        return 1
+    return paths(m - 1, n) + paths(m, n - 1)
 
-        return dfs(r+1, c) + dfs(r, c + 1)
 
-    return dfs(1,1)
+def max_product(s):
+    """Return the maximum product of non-consecutive elements of s.
+
+    >>> max_product([10, 3, 1, 9, 2])   # 10 * 9
+    90
+    >>> max_product([5, 10, 5, 10, 5])  # 5 * 5 * 5
+    125
+    >>> max_product([])                 # The product of no numbers is 1
+    1
+    """
+
 
 
 if __name__ == "__main__":
     pass
 
    
+
