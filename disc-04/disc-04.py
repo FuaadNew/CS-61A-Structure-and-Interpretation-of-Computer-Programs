@@ -15,8 +15,18 @@ def paths(m, n):
     """
     "*** YOUR CODE HERE ***"
 
+    def dfs(r,c):
+        if r > m or c > n:
+            return 0
+        if r == m and c == n:
+            return 1
 
+        return dfs(r+1, c) + dfs(r, c + 1)
+
+    return dfs(1,1)
 
 
 if __name__ == "__main__":
+    pass
+
    
