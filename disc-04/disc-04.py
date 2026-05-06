@@ -31,11 +31,24 @@ def max_product(s):
     1
     """
    
-    
-
-   
 
 
+    def dfs(s):
+        if len(s) == 1:
+            return s[0]
+
+        if len(s) == 0:
+            return 1
+
+        #include 
+        include = s[0] * dfs(s[2:])
+
+        #exclude
+        exclude = dfs(s[1:])
+
+        return max(include,exclude)
+
+    return dfs(s)
 
 
 
