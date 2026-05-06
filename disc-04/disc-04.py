@@ -32,23 +32,20 @@ def max_product(s):
     """
    
 
+    if len(s) == 1:
+        return s[0]
 
-    def dfs(s):
-        if len(s) == 1:
-            return s[0]
+    if len(s) == 0:
+        return 1
 
-        if len(s) == 0:
-            return 1
+    #include 
+    include = s[0] * max_product(s[2:])
 
-        #include 
-        include = s[0] * dfs(s[2:])
+    #exclude
+    exclude = max_product(s[1:])
 
-        #exclude
-        exclude = dfs(s[1:])
+    return max(include,exclude)
 
-        return max(include,exclude)
-
-    return dfs(s)
 
 
 
@@ -57,9 +54,7 @@ def max_product(s):
 
 
 if __name__ == "__main__":
-    50 
-    print(max_product([5, 10, 5, 10, 5]))
-
+    print(max_product([10, 3, 1, 9, 2]))
    
 
    
