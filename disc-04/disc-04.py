@@ -30,11 +30,24 @@ def max_product(s):
     >>> max_product([])                 # The product of no numbers is 1
     1
     """
+   
+    
+
+   
+
+
+
+
+
+
 
 
 
 if __name__ == "__main__":
-    pass
+    50 
+    print(max_product([5, 10, 5, 10, 5]))
+
+   
 
    
 
