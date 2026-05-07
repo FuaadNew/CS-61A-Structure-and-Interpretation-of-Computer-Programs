@@ -47,8 +47,6 @@ def max_product(s):
     return max(include,exclude)
 
 
-
-
 def sums(n, m):
     """Return lists that sum to n containing positive numbers up to m that
     have no adjacent repeats.
@@ -72,11 +70,11 @@ def sums(n, m):
     result = []
     for k in range(1, m + 1):
         result = result + [ ___ for rest in ___ if rest == [] or ___ ]
-
-
+    return result
 
 if __name__ == "__main__":
     
+    print(sums(5, 2))
    
 
    
