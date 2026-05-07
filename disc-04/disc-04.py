@@ -69,7 +69,7 @@ def sums(n, m):
         return [sums_to_zero] # Return a list of all the ways to sum to zero
     result = []
     for k in range(1, m + 1):
-        result = result + [ ___ for rest in ___ if rest == [] or ___ ]
+        result = result + [ rest for rest in sums(n - 2,m) if rest == [] or sum(res) == m]
     return result
 
 if __name__ == "__main__":
