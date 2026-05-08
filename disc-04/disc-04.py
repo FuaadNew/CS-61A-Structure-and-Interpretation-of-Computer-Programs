@@ -69,12 +69,9 @@ def sums(n, m):
         return [sums_to_zero] # Return a list of all the ways to sum to zero
     result = []
     for k in range(1, m + 1):
-        result = result + [ ___ for rest in ___ if rest == [] or ___ ]
+        result = result + [ [k] + rest for rest in sums(n - k,m) if rest == [] or k != rest[0]]
     return result
 if __name__ == "__main__":
-    
-    print(sums(5, 2))
-   
-
+    pass
    
 
