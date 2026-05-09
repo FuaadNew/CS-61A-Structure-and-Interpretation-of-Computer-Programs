@@ -72,6 +72,7 @@ def sums(n, m):
         result = result + [ [k] + rest for rest in sums(n - k,m) if rest == [] or k != rest[0]]
     return result
 if __name__ == "__main__":
-    pass
+    xs = list(range(-10, 11))
+    ys = [x*x - 2*x + 1 for x in xs] 
    
 
