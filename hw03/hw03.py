@@ -53,8 +53,11 @@ def digit_distance(n):
     ...       ['For', 'While'])
     True
     """
-    "*** YOUR CODE HERE ***"
-
+    if n < 10:
+        return n
+    
+    return  digit_distance(n//100) - abs(n % 10 - (n % 100) // 10)
+    
 
 def interleaved_sum(n, odd_func, even_func):
     """Compute the sum odd_func(1) + even_func(2) + odd_func(3) + ..., up
@@ -203,3 +206,16 @@ def make_anonymous_factorial():
     return 'YOUR_EXPRESSION_HERE'
 
 
+if __name__ == "__main__":
+
+    #print(digit_distance(3))
+    #0
+    #print(digit_distance(777)) # 0 + 0
+    #0
+    print(digit_distance(314)) # 2 + 3
+    #5
+    #>>> digit_distance(31415926535) # 2 + 3 + 3 + 4 + ... + 2
+    #32
+    #>>> digit_distance(3464660003)  # 1 + 2 + 2 + 2 + ... + 3
+    #16
+  
