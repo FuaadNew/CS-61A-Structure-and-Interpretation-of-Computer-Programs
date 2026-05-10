@@ -54,9 +54,9 @@ def digit_distance(n):
     True
     """
     if n < 10:
-        return n
-    
-    return  digit_distance(n//100) - abs(n % 10 - (n % 100) // 10)
+        return 0
+    adj_digits_diff =  abs(n % 10 - (n % 100) // 10) 
+    return adj_digits_diff +  digit_distance(n//10)
     
 
 def interleaved_sum(n, odd_func, even_func):
@@ -207,15 +207,18 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
+    # --- num_eights ---
+    print(num_eights(3))        # expected: 0
+    print(num_eights(8))        # expected: 1
+    print(num_eights(88888888)) # expected: 8
+    print(num_eights(2638))     # expected: 1
+    print(num_eights(86380))    # expected: 2
+    print(num_eights(12345))    # expected: 0
+    print(num_eights(8782089))  # expected: 3
 
-    #print(digit_distance(3))
-    #0
-    #print(digit_distance(777)) # 0 + 0
-    #0
-    print(digit_distance(314)) # 2 + 3
-    #5
-    #>>> digit_distance(31415926535) # 2 + 3 + 3 + 4 + ... + 2
-    #32
-    #>>> digit_distance(3464660003)  # 1 + 2 + 2 + 2 + ... + 3
-    #16
-  
+    # --- digit_distance ---
+    print(digit_distance(3))           # expected: 0
+    print(digit_distance(777))         # expected: 0
+    print(digit_distance(314))         # expected: 5
+    print(digit_distance(31415926535)) # expected: 32
+    print(digit_distance(3464660003))  # expected: 16
