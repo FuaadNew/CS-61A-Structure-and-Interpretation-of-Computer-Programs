@@ -207,18 +207,4 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
-    # --- num_eights ---
-    print(num_eights(3))        # expected: 0
-    print(num_eights(8))        # expected: 1
-    print(num_eights(88888888)) # expected: 8
-    print(num_eights(2638))     # expected: 1
-    print(num_eights(86380))    # expected: 2
-    print(num_eights(12345))    # expected: 0
-    print(num_eights(8782089))  # expected: 3
-
-    # --- digit_distance ---
-    print(digit_distance(3))           # expected: 0
-    print(digit_distance(777))         # expected: 0
-    print(digit_distance(314))         # expected: 5
-    print(digit_distance(31415926535)) # expected: 32
-    print(digit_distance(3464660003))  # expected: 16
+    
