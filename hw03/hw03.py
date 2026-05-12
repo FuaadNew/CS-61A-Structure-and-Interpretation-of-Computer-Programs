@@ -81,16 +81,9 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
-
-    def check_even(n):
-        if n < 1:
-            return False
-        if n == 1:
-            return True
-        
-        return check_even(n - 2)
     
-
+    if n == 1:
+        return odd_func()
 
 def next_smaller_dollar(bill):
     """Returns the next smaller bill in order."""
