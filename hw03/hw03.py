@@ -82,12 +82,22 @@ def interleaved_sum(n, odd_func, even_func):
     """
     "*** YOUR CODE HERE ***"
     
-    if n < 0:
-        return 0
-    if n == 1:
-        return odd_func(n)
-    if n == 0:
-        return even_func(n)
+    def helper_odd(k):
+        if k > n:
+            return 0
+        
+        cur_sum = odd_func(k)
+        return cur_sum + helper_odd(k + 2)
+    
+    def helper_even(k):
+        if k > n:
+            return 0
+        
+        cur_sum = even_func(k)
+        return cur_sum + helper_even(k + 2)
+
+    return helper_odd(1) + helper_even(2)
+
     
     return interleaved_sum(n - 1, odd_func, even_func) + interleaved_sum(n - 2, odd_func, even_func)
 def next_smaller_dollar(bill):
@@ -215,21 +225,12 @@ def make_anonymous_factorial():
 
 if __name__ == "__main__":
    
-
+    # --- interleaved_sum ---
     identity = lambda x: x
     square = lambda x: x * x
     triple = lambda x: x * 3
-    print(interleaved_sum(5, identity, square)) # 1   + 2*2 + 3   + 4*4 + 5
-    29
-    print(interleaved_sum(5, square, identity)) # 1*1 + 2   + 3*3 + 4   + 5*5
-    41
-    print(interleaved_sum(4, triple, square))   # 1*3 + 2*2 + 3*3 + 4*4
-    32
-    print(interleaved_sum(4, square, triple))  # 1*1 + 2*3 + 3*3 + 4*3
-    28
-    #>>> from construct_check import check
-    #>>> check(HW_SOURCE_FILE, 'interleaved_sum', ['While', 'For', 'Mod']) # ban loops and %
-    #True
-    #>>> check(HW_SOURCE_FILE, 'interleaved_sum', ['BitAnd', 'BitOr', 'BitXor']) # ban bitwise operators, don't worry about these if you don't know what they are
-    #True
+    print(interleaved_sum(5, identity, square)) # expected: 29
+    print(interleaved_sum(5, square, identity)) # expected: 41
+    print(interleaved_sum(4, triple, square))   # expected: 32
+    print(interleaved_sum(4, square, triple))   # expected: 28
 
