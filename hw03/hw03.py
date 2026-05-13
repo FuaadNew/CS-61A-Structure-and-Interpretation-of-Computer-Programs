@@ -88,13 +88,7 @@ def interleaved_sum(n, odd_func, even_func):
         
         cur_sum = odd_func(k)
         return cur_sum + helper_odd(k + 2)
-    
-    def helper_even(k):
-        if k > n:
-            return 0
-        
-        cur_sum = even_func(k)
-        return cur_sum + helper_even(k + 2)
+
 
     return helper_odd(1) + helper_even(2)
 
@@ -225,12 +219,4 @@ def make_anonymous_factorial():
 
 if __name__ == "__main__":
    
-    # --- interleaved_sum ---
-    identity = lambda x: x
-    square = lambda x: x * x
-    triple = lambda x: x * 3
-    print(interleaved_sum(5, identity, square)) # expected: 29
-    print(interleaved_sum(5, square, identity)) # expected: 41
-    print(interleaved_sum(4, triple, square))   # expected: 32
-    print(interleaved_sum(4, square, triple))   # expected: 28
-
+  
