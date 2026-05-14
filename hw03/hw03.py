@@ -81,19 +81,18 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
-    
+
     def helper_odd(k):
-        if k > n:
-            return 0
-        
-        cur_sum = odd_func(k)
-        return cur_sum + helper_odd(k + 2)
+        if k + 1 > n:
+            return odd_func(k) 
 
-
-    return helper_odd(1) + helper_even(2)
+        return odd_func(k) + even_func(k + 1) + helper_odd(k + 2)
 
     
-    return interleaved_sum(n - 1, odd_func, even_func) + interleaved_sum(n - 2, odd_func, even_func)
+    return helper_odd(1)
+
+    
+    
 def next_smaller_dollar(bill):
     """Returns the next smaller bill in order."""
     if bill == 100:
@@ -218,5 +217,16 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
-   
+    identity = lambda x: x
+    square = lambda x: x * x
+    triple = lambda x: x * 3
+    #print(interleaved_sum(5, identity, square)) # 1   + 2*2 + 3   + 4*4 + 5
+    #29
+    #print(interleaved_sum(5, square, identity)) # 1*1 + 2   + 3*3 + 4   + 5*5
+    #41
+    print(interleaved_sum(4, triple, square))   # 1*3 + 2*2 + 3*3 + 4*4
+    #32
+    print(interleaved_sum(4, square, triple))   # 1*1 + 2*3 + 3*3 + 4*3
+    #28
+  
   
