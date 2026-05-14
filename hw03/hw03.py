@@ -84,8 +84,9 @@ def interleaved_sum(n, odd_func, even_func):
 
     def helper_odd(k):
         if k + 1 > n:
+            print(k,"odd only", odd_func(k))
             return odd_func(k) 
-
+        print(f"K: {k}","both odd and even", f"odd: {k}", f"odd response: {odd_func(k)}", f"even: {k + 1}", f"even response: {even_func(k + 1)}")
         return odd_func(k) + even_func(k + 1) + helper_odd(k + 2)
 
     
@@ -226,7 +227,8 @@ if __name__ == "__main__":
     #41
     print(interleaved_sum(4, triple, square))   # 1*3 + 2*2 + 3*3 + 4*4
     #32
-    print(interleaved_sum(4, square, triple))   # 1*1 + 2*3 + 3*3 + 4*3
+
+    #print(interleaved_sum(4, square, triple))   # 1*1 + 2*3 + 3*3 + 4*3
     #28
   
   
