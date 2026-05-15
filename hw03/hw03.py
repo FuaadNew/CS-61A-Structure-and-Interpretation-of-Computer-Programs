@@ -218,17 +218,5 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
-    identity = lambda x: x
-    square = lambda x: x * x
-    triple = lambda x: x * 3
-    #print(interleaved_sum(5, identity, square)) # 1   + 2*2 + 3   + 4*4 + 5
-    #29
-    #print(interleaved_sum(5, square, identity)) # 1*1 + 2   + 3*3 + 4   + 5*5
-    #41
-    #print(interleaved_sum(4, triple, square))   # 1*3 + 2*2 + 3*3 + 4*4
-    #32
-
-    print(interleaved_sum(4, square, triple))   # 1*1 + 2*3 + 3*3 + 4*3
-    #28
-  
+    
   
