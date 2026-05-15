@@ -129,7 +129,23 @@ def count_dollars(total):
     """
     "*** YOUR CODE HERE ***"
 
+    res = []
+    bills  = [1, 5, 10, 20, 50, 100]
 
+    def dfs(i,ways, curTotal):
+        if curTotal == total:
+            res.append(ways[:])
+            return 
+    
+        
+        bill = next_smaller_dollar(i)
+        ways.append(bill)
+        dfs(i + 1, ways, curTotal + bill)
+        ways.pop()
+        dfs(i + 1, ways, curTotal)
+
+    dfs(1,[], 0)
+    print(res)
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
     if bill == 1:
@@ -218,5 +234,6 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
+    count_dollars(15)  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
     
   
