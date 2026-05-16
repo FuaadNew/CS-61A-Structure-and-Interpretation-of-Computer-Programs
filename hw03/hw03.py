@@ -128,33 +128,27 @@ def count_dollars(total):
     True
     """
     "*** YOUR CODE HERE ***"
-
-    res = []
-    bills  = [1, 5, 10, 20, 50, 100]
-    bill_set = set()
-    def dfs(curTotal, ways):
-        
+    bills = [1, 5, 10, 20, 50, 100]
+    calls = [0]
+    toobig = [0]
+    def dfs(curTotal):
+        calls[0]+=1
         if curTotal == total:
-            if tuple(sorted(ways[:])) not in bill_set:
-                res.append(ways[:])
-                bill_set.add(tuple(sorted(ways[:])))
-            return
-       
+            return 1
+        if curTotal > total:
+            return 0
+        ways = 0
         for bill in bills:
             candidate = bill
-            while curTotal + candidate > total:
+            while candidate + curTotal > total:
+                toobig[0]+=1
                 candidate = next_smaller_dollar(candidate)
-            ways.append(candidate)
-            dfs(curTotal + candidate, ways)
-            ways.pop()
-        
-
-    dfs(0,[])
-    return len(res)
-
-
-
-
+            ways+= dfs(curTotal + candidate)
+        return ways
+    res = dfs(0)
+    print("num of calls", calls[0])
+    print("bill too big", toobig[0])
+    return res
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
     if bill == 1:
@@ -244,13 +238,13 @@ def make_anonymous_factorial():
 
 if __name__ == "__main__":
     
-    #print(count_dollars(15))  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
+    print(count_dollars(15))  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
     6
     #print(count_dollars(10))  # 10 $1 bills, 5 $1 & 1 $5 bills, 2 $5 bills, 10 $1 bills
     #4
     #print(count_dollars(20)) # 20 $1 bills, 15 $1 & $5 bills, ... 1 $20 bill
     10
-    print(count_dollars(45))  # How many ways to make change for 45 dollars?
+    #print(count_dollars(45))  # How many ways to make change for 45 dollars?
     44
     #count_dollars(100) # How many ways to make change for 100 dollars?
     344
