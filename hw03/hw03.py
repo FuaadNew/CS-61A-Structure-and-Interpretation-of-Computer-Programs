@@ -131,13 +131,15 @@ def count_dollars(total):
 
     res = []
     bills  = [1, 5, 10, 20, 50, 100]
-    way_set = set()
+    bill_set = set()
     def dfs(curTotal, ways):
+        
         if curTotal == total:
-            if tuple(sorted(ways)) not in way_set:
+            if tuple(sorted(ways[:])) not in bill_set:
                 res.append(ways[:])
-                way_set.add(tuple(sorted(ways)))
+                bill_set.add(tuple(sorted(ways[:])))
             return
+       
         for bill in bills:
             candidate = bill
             while curTotal + candidate > total:
@@ -145,11 +147,10 @@ def count_dollars(total):
             ways.append(candidate)
             dfs(curTotal + candidate, ways)
             ways.pop()
-            continue
         
 
     dfs(0,[])
-    print(len(res))
+    return len(res)
 
 
 
@@ -242,6 +243,19 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
-    print(count_dollars(100))
     
-  
+    #print(count_dollars(15))  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
+    6
+    #print(count_dollars(10))  # 10 $1 bills, 5 $1 & 1 $5 bills, 2 $5 bills, 10 $1 bills
+    #4
+    #print(count_dollars(20)) # 20 $1 bills, 15 $1 & $5 bills, ... 1 $20 bill
+    10
+    print(count_dollars(45))  # How many ways to make change for 45 dollars?
+    44
+    #count_dollars(100) # How many ways to make change for 100 dollars?
+    344
+    #count_dollars(200) # How many ways to make change for 200 dollars?
+    3274
+
+
+
