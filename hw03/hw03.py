@@ -130,6 +130,19 @@ def count_dollars(total):
     "*** YOUR CODE HERE ***"
     #
     bills = [1, 5, 10, 20, 50, 100]
+
+    def dfs(i,curTotal):
+        if curTotal == total:
+            return 1
+        if curTotal > total:
+            return 0
+        if i == len(bills):
+            return 0
+        res = 0
+        return dfs(i + 1, curTotal) + dfs(i , curTotal + bills[i])
+
+
+    return dfs(0,0)
    
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
@@ -220,7 +233,7 @@ def make_anonymous_factorial():
 
 if __name__ == "__main__":
     
-    print(count_dollars(15))  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
+    #print(count_dollars(15))  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
     6
     #print(count_dollars(10))  # 10 $1 bills, 5 $1 & 1 $5 bills, 2 $5 bills, 10 $1 bills
     #4
@@ -228,9 +241,9 @@ if __name__ == "__main__":
     10
     #print(count_dollars(45))  # How many ways to make change for 45 dollars?
     44
-    #count_dollars(100) # How many ways to make change for 100 dollars?
+    #print(count_dollars(100)) # How many ways to make change for 100 dollars?
     344
-    #count_dollars(200) # How many ways to make change for 200 dollars?
+    print(count_dollars(200)) # How many ways to make change for 200 dollars?
     3274
 
 
