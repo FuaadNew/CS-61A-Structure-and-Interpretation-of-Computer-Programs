@@ -128,27 +128,9 @@ def count_dollars(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    #
     bills = [1, 5, 10, 20, 50, 100]
-    calls = [0]
-    toobig = [0]
-    def dfs(curTotal):
-        calls[0]+=1
-        if curTotal == total:
-            return 1
-        if curTotal > total:
-            return 0
-        ways = 0
-        for bill in bills:
-            candidate = bill
-            while candidate + curTotal > total:
-                toobig[0]+=1
-                candidate = next_smaller_dollar(candidate)
-            ways+= dfs(curTotal + candidate)
-        return ways
-    res = dfs(0)
-    print("num of calls", calls[0])
-    print("bill too big", toobig[0])
-    return res
+   
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
     if bill == 1:
