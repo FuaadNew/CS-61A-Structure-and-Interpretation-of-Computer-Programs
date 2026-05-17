@@ -129,21 +129,17 @@ def count_dollars(total):
     """
     "*** YOUR CODE HERE ***"
     #
-    bills = [1, 5, 10, 20, 50, 100]
-
-    def dfs(i,curTotal):
-        if curTotal == total:
+    
+    def helper(amount, bill):
+        if amount == 0:
             return 1
-        if curTotal > total:
+        if amount < 0 or bill is None:
             return 0
-        if i == len(bills):
-            return 0
-        res = 0
-        return dfs(i + 1, curTotal) + dfs(i , curTotal + bills[i])
+     
+        return helper(amount - bill, bill) +  helper(amount, next_smaller_dollar(bill)) 
 
+    return helper(total, 100)
 
-    return dfs(0,0)
-   
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
     if bill == 1:
