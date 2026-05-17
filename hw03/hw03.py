@@ -174,7 +174,7 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
-     def helper(amount, bill):
+    def helper(amount, bill):
         if amount == 0:
             return 1
         if amount < 0 or bill is None:
