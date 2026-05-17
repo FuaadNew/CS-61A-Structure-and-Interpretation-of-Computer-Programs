@@ -174,6 +174,16 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
+     def helper(amount, bill):
+        if amount == 0:
+            return 1
+        if amount < 0 or bill is None:
+            return 0
+     
+        return helper(amount - bill, bill) +  helper(amount, next_larger_dollar(bill)) 
+
+
+    return helper(total, 1)
 
 
 def print_move(origin, destination):
@@ -228,19 +238,7 @@ def make_anonymous_factorial():
 
 
 if __name__ == "__main__":
+    pass
     
-    #print(count_dollars(15))  # 15 $1 bills, 10 $1 & 1 $5 bills, ... 1 $5 & 1 $10 bills
-    6
-    #print(count_dollars(10))  # 10 $1 bills, 5 $1 & 1 $5 bills, 2 $5 bills, 10 $1 bills
-    #4
-    #print(count_dollars(20)) # 20 $1 bills, 15 $1 & $5 bills, ... 1 $20 bill
-    10
-    #print(count_dollars(45))  # How many ways to make change for 45 dollars?
-    44
-    #print(count_dollars(100)) # How many ways to make change for 100 dollars?
-    344
-    print(count_dollars(200)) # How many ways to make change for 200 dollars?
-    3274
-
 
 
