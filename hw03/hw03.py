@@ -220,17 +220,6 @@ def move_stack(n, start, end):
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
 
-    if n == 0:
-        return
-    #move smallest to end
-    print_move(1, 3)
-    #move second smallest to middle
-    print_move(1, 2)
-
-    #move smallet ontop of second smallest
-    print_move(3, 2)
-
-    #move biggest to 2
 
 
 
