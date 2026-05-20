@@ -221,15 +221,6 @@ def move_stack(n, start, end):
     "*** YOUR CODE HERE ***"
 
  
-    base case: if n == 1, just print_move(start, end) and stop
-
-    otherwise:
-        1. figure out the "other" rod (the one that's neither start nor end)
-        2. move the top (n-1) disks from start → other  (using end as the spare)
-        3. move the 1 remaining (largest) disk from start → end
-        4. move the (n-1) disks from other → end  (using start as the spare)
-
-
 
 
 
