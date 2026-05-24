@@ -220,6 +220,23 @@ def move_stack(n, start, end):
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
 
+    #if we only have one rod all we have to do is move from start to end
+    if n == 1:
+        print(f"Move the top disk from rod {start} to rod {end}")
+        return
+    #calculate other rod
+    other = 6 - (start + end)
+    #if we have more than one disk left we need to move the top rod at start to other
+    
+    move_stack(n-1, start, other)
+    print(f"Move the top disk from rod {start} to rod {end}")
+    #if we've moved all the other disks to the end 
+    # then we can finally move this disk to the end
+    move_stack(n-1, other, end)
+
+
+    
+
  
 
 
@@ -240,8 +257,17 @@ def make_anonymous_factorial():
     return 'YOUR_EXPRESSION_HERE'
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":    
+   
+    move_stack(3, 1, 3)
+    """Move the top disk from rod 1 to rod 3 
+    Move the top disk from rod 1 to rod 2 
+    Move the top disk from rod 3 to rod 2  
+    Move the top disk from rod 1 to rod 3 
+    Move the top disk from rod 2 to rod 1
+    Move the top disk from rod 2 to rod 3
+    Move the top disk from rod 1 to rod 3"""
+    
     
 
 
