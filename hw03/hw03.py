@@ -259,15 +259,4 @@ def make_anonymous_factorial():
 
 if __name__ == "__main__":    
    
-    move_stack(3, 1, 3)
-    """Move the top disk from rod 1 to rod 3 
-    Move the top disk from rod 1 to rod 2 
-    Move the top disk from rod 3 to rod 2  
-    Move the top disk from rod 1 to rod 3 
-    Move the top disk from rod 2 to rod 1
-    Move the top disk from rod 2 to rod 3
-    Move the top disk from rod 1 to rod 3"""
-    
-    
-
-
+  
