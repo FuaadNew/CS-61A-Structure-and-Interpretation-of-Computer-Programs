@@ -255,10 +255,9 @@ def make_anonymous_factorial():
     True
     """
 
-    return lambda n: (lambda self, n: 1 if n == 1 else mul(n, self(sub(n, 1))))(lambda n: 1 if n == 1 else mul(n, self(self,(sub(n, 1))),n))
+    return lambda n: (lambda self, n: 1 if n == 1 else mul(n, self(self, sub(n, 1))))(lambda self,n : 1 if n == 1 else mul(n, self(self, sub(n, 1))),n)
 
 
 
-if __name__ == "__main__":    
-   
-  
+if __name__ == "__main__":
+    pass
