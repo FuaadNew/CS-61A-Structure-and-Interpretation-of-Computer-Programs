@@ -254,8 +254,9 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
-
+    return lambda n: 1 if n == 1 else mul(n, lambda n: (sub(n, 1)))
+    #fact = lambda n: 1 if n == 1 else mul(n, fact(sub(n, 1)))
+    
 
 
 
