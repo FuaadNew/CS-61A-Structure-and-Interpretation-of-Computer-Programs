@@ -175,5 +175,6 @@ change_abstraction.changed = False
 
 
 
-if __name__== "__main__":
-    print("hello")
+if __name__ == "__main__":
+    print(divide([3, 4, 5], [8, 9, 10, 11, 12]))
+    print(divide(range(1, 5), range(20, 25)))
