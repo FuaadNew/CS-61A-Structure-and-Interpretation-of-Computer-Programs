@@ -176,4 +176,14 @@ change_abstraction.changed = False
 
 
 if __name__ == "__main__":
+    prices = {'oranges': 4, 'apples': 3, 'bananas': 2, 'kiwis': 9}
+
+    print("buy(['apples', 'oranges', 'bananas'], prices, 12):")
+    buy(['apples', 'oranges', 'bananas'], prices, 12)
+
+    print("buy(['apples', 'oranges', 'bananas'], prices, 16):")
+    buy(['apples', 'oranges', 'bananas'], prices, 16)
+
+    print("buy(['apples', 'kiwis'], prices, 36):")
+    buy(['apples', 'kiwis'], prices, 36)
    
