@@ -31,9 +31,9 @@ def buy(fruits_to_buy, prices, total_amount):
         elif fruits and amount > 0:
             fruit = fruits[0]
             price = prices[fruit]
-            for k in range(1, amount - price):
+            for k in range(1, (amount // price) + 1):
                 # Hint: The display function will help you add fruit to the cart.
-                add(fruits[1:], amount - k, cart + fruit)
+                add(fruits[1:], amount - (price * k), cart + display(fruit,k))
     add(fruits_to_buy, total_amount, '')
 
 
