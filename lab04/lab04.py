@@ -93,7 +93,7 @@ def closer_city(lat, lon, city_a, city_b):
     distance_a = distance(city_c, city_a)
     distance_b = distance(city_c, city_b)
 
-    return get_name(city_a) if distance_a < distance_b else city_b
+    return get_name(city_a) if distance_a < distance_b else get_name(city_b)
 
 def check_city_abstraction():
     """
