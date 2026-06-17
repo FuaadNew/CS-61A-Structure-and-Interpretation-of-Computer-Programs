@@ -23,11 +23,4 @@ def has_path(t, p):
 
 
 if __name__ == "__main__":
-    t2 = tree(5, [tree(6), tree(7)])
-    t1 = tree(3, [tree(4), t2])
 
-    print(has_path(t1, [5, 6]))        # False
-    print(has_path(t2, [5, 6]))        # True
-    print(has_path(t1, [3, 5]))        # True
-    print(has_path(t1, [3, 5, 6]))     # True
-    print(has_path(t1, [3, 4, 5, 6]))  # False
