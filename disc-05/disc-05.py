@@ -22,29 +22,6 @@ def has_path(t, p):
         "*** YOUR CODE HERE ***"
 
 
-def find_path(t, x):
-    """
-    >>> t2 = tree(5, [tree(6), tree(7)])
-    >>> t1 = tree(3, [tree(4), t2])
-    >>> find_path(t1, 5)
-    [3, 5]
-    >>> find_path(t1, 4)
-    [3, 4]
-    >>> find_path(t1, 6)
-    [3, 5, 6]
-    >>> find_path(t2, 6)
-    [5, 6]
-    >>> print(find_path(t1, 2))
-    None
-    """
-    if ____:
-        return ____
-    ____:
-        path = ____
-        if path:
-            return ____
-    return None
-
 
 
 if __name__ == "__main__":
