@@ -36,13 +36,15 @@ def has_path(t, p):
     >>> has_path(t1, [3, 4, 5, 6])  # There is no path with these labels
     False
     """
-    if p == label(t):  # when len(p) is 1
+    if p == [label(t)]:  # when len(p) is 1
         return True
-    elif label(t) != label(t):
+    elif label(t) != p[0]:
         return False
     else:
-        return has_path(t, branches(tree))
-
+        for b in branches(t):
+            if has_path(b, p[1:]):
+                return True
+        return False
 
 
 
