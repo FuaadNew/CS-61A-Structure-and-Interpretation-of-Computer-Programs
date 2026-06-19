@@ -1,3 +1,25 @@
+def tree(label, branches=[]):
+    for branch in branches:
+        assert is_tree(branch), 'branches must be trees'
+    return [label] + list(branches)
+
+def label(tree):
+    return tree[0]
+
+def branches(tree):
+    return tree[1:]
+
+def is_leaf(tree):
+    return not branches(tree)
+
+def is_tree(tree):
+    if type(tree) != list or len(tree) < 1:
+        return False
+    for branch in branches(tree):
+        if not is_tree(branch):
+            return False
+    return True
+
 def has_path(t, p):
     """Return whether tree t has a path from the root with labels p.
 
@@ -14,15 +36,16 @@ def has_path(t, p):
     >>> has_path(t1, [3, 4, 5, 6])  # There is no path with these labels
     False
     """
-    if p == ____:  # when len(p) is 1
+    if p == label(t):  # when len(p) is 1
         return True
-    elif label(t) != ____:
+    elif label(t) != label(t):
         return False
     else:
-        "*** YOUR CODE HERE ***"
+        return has_path(t, branches(tree))
 
 
 
 
 if __name__ == "__main__":
+    pass
 
