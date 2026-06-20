@@ -62,12 +62,12 @@ def find_path(t, x):
     >>> print(find_path(t1, 2))
     None
     """
-    if ____:
-        return ____
-    ____:
-        path = ____
+    if label(t) == x:
+        return x
+    for b in branches(t):
+        path = find_path(b,x)
         if path:
-            return ____
+            return label(t) + path
     return None
 
 
