@@ -63,11 +63,11 @@ def find_path(t, x):
     None
     """
     if label(t) == x:
-        return x
+        return [label(t)]
     for b in branches(t):
         path = find_path(b,x)
         if path:
-            return label(t) + path
+            return [label(t)] + path
     return None
 
 
