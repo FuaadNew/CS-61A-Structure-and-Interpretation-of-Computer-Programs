@@ -41,6 +41,8 @@ def pick(paragraphs, select, k):
     for para in paragraphs:
         if select(para):
             valid.append(para)
+    if not valid or k >= len(valid):
+        return ""
     return valid[k]
     # END PROBLEM 1
 
@@ -411,3 +413,23 @@ def run(*args):
     args = parser.parse_args()
     if args.t:
         run_typing_test(args.topic)
+
+
+if __name__ == "__main__":
+    # Expected: hi
+    print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 0))
+
+    # Expected: fine
+    print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 1))
+
+    # Expected: how are you
+    print(pick(["hi", "how are you", "fine"], lambda p: "are" in p, 0))
+
+    # Expected: first
+    print(pick(["first", "second", "third"], lambda p: True, 0))
+
+    # Expected: third
+    print(pick(["first", "second", "third"], lambda p: True, 2))
+
+    # Expected: an empty string
+    print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 2))
