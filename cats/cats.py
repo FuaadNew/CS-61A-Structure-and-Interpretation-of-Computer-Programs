@@ -37,7 +37,11 @@ def pick(paragraphs, select, k):
     ''
     """
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
+    valid = []
+    for para in paragraphs:
+        if select(para):
+            valid.append(para)
+    return valid[k]
     # END PROBLEM 1
 
 
