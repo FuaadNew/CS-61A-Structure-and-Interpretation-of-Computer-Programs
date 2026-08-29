@@ -63,7 +63,13 @@ def about(subject):
     assert all([lower(x) == x for x in subject]), "subjects should be lowercase."
 
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    def about_helper(para):
+        for entry in para:
+            for word in entry.lower().split():
+                if word in subject:
+                    return True
+        return False
+    return about_helper(para)
     # END PROBLEM 2
 
 
