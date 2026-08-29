@@ -69,7 +69,7 @@ def about(subject):
                 if word in subject:
                     return True
         return False
-    return about_helper(para)
+    return about_helper
     # END PROBLEM 2
 
 
@@ -439,3 +439,18 @@ if __name__ == "__main__":
 
     # Expected: an empty string
     print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 2))
+
+    # Expected: True
+    print(about(["dog"])("Cute Dog!"))
+
+    # Expected: True
+    print(about(["pup", "kitten"])("That is a playful kitten."))
+
+    # Expected: False
+    print(about(["dog"])("That is a cat."))
+
+    # Expected: False
+    print(about(["dog"])("I like hotdogs."))
+
+    # Expected: True
+    print(about(["cats"])("CATS are wonderful!"))
