@@ -117,13 +117,13 @@ def accuracy(typed, source):
         return 0.0
     typed_index, source_index = 0,0
     correct_words = 0
-    max_score = len(source_words)
+    max_score = len(typed_words)
     while typed_index < len(typed_words) and source_index < len(source_words):
         if typed_words[typed_index] == source_words[source_index]:
-            correct+=1
+            correct_words+=1
         typed_index+=1
         source_index+=1
-    return correct / max_score
+    return (correct_words / max_score) * 100.0
     # END PROBLEM 3
 
 
