@@ -446,35 +446,26 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    # Expected: hi
-    print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 0))
+    # Expected: 50.0
+    print(accuracy("Cute Dog!", "Cute Dog."))
 
-    # Expected: fine
-    print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 1))
+    # Expected: 0.0
+    print(accuracy("A Cute Dog!", "Cute Dog."))
 
-    # Expected: how are you
-    print(pick(["hi", "how are you", "fine"], lambda p: "are" in p, 0))
+    # Expected: 50.0
+    print(accuracy("cute Dog.", "Cute Dog."))
 
-    # Expected: first
-    print(pick(["first", "second", "third"], lambda p: True, 0))
+    # Expected: 50.0
+    print(accuracy("Cute Dog. I say!", "Cute Dog."))
 
-    # Expected: third
-    print(pick(["first", "second", "third"], lambda p: True, 2))
+    # Expected: 100.0
+    print(accuracy("Cute", "Cute Dog."))
 
-    # Expected: an empty string
-    print(pick(["hi", "how are you", "fine"], lambda p: len(p) <= 4, 2))
+    # Expected: 0.0
+    print(accuracy("", "Cute Dog."))
 
-    # Expected: True
-    print(about(["dog"])("Cute Dog!"))
+    # Expected: 100.0
+    print(accuracy("", ""))
 
-    # Expected: True
-    print(about(["pup", "kitten"])("That is a playful kitten."))
-
-    # Expected: False
-    print(about(["dog"])("That is a cat."))
-
-    # Expected: False
-    print(about(["dog"])("I like hotdogs."))
-
-    # Expected: True
-    print(about(["cats"])("CATS are wonderful!"))
+    # Expected: 0.0
+    print(accuracy("extra words", ""))
