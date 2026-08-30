@@ -64,9 +64,20 @@ def about(subject):
 
     # BEGIN PROBLEM 2
     def about_helper(para):
+
+        def clean_para(para):
+            letters = 'abcdefghijklmnopqrstuvwxyz'
+            res = []
+            for word in para.split():
+                temp = []
+                for c in word.lower():
+                    if c in letters:
+                        temp.append(c)
+                res.append("".join(temp))
+            return res
+        para = clean_para(para)
         for entry in para:
-            for word in entry.lower().split():
-                if word in subject:
+                if entry in subject:
                     return True
         return False
     return about_helper
