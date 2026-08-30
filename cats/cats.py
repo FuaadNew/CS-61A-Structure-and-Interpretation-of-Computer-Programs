@@ -446,26 +446,4 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    # Expected: 50.0
-    print(accuracy("Cute Dog!", "Cute Dog."))
-
-    # Expected: 0.0
-    print(accuracy("A Cute Dog!", "Cute Dog."))
-
-    # Expected: 50.0
-    print(accuracy("cute Dog.", "Cute Dog."))
-
-    # Expected: 50.0
-    print(accuracy("Cute Dog. I say!", "Cute Dog."))
-
-    # Expected: 100.0
-    print(accuracy("Cute", "Cute Dog."))
-
-    # Expected: 0.0
-    print(accuracy("", "Cute Dog."))
-
-    # Expected: 100.0
-    print(accuracy("", ""))
-
-    # Expected: 0.0
-    print(accuracy("extra words", ""))
+    
