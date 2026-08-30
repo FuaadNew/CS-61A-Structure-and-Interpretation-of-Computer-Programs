@@ -92,7 +92,7 @@ def accuracy(typed, source):
     Arguments:
         typed: a string that may contain typos
         source: a model string without errors
-
+    
     >>> accuracy('Cute Dog!', 'Cute Dog.')
     50.0
     >>> accuracy('A Cute Dog!', 'Cute Dog.')
@@ -111,7 +111,19 @@ def accuracy(typed, source):
     typed_words = split(typed)
     source_words = split(source)
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+    if not typed_words and not source_words:
+        return 100.0
+    if (not typed_words and source_words) or (typed_words and not source_words):
+        return 0.0
+    typed_index, source_index = 0,0
+    correct_words = 0
+    max_score = len(source_words)
+    while typed_index < len(typed_words) and source_index < len(source_words):
+        if typed_words[typed_index] == source_words[source_index]:
+            correct+=1
+        typed_index+=1
+        source_index+=1
+    return correct / max_score
     # END PROBLEM 3
 
 
