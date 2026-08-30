@@ -67,11 +67,12 @@ def about(subject):
 
         def clean_para(para):
             letters = 'abcdefghijklmnopqrstuvwxyz'
+            numbers = '0123456789'
             res = []
             for word in para.split():
                 temp = []
                 for c in word.lower():
-                    if c in letters:
+                    if c in letters or c in numbers:
                         temp.append(c)
                 res.append("".join(temp))
             return res
