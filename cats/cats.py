@@ -135,10 +135,16 @@ def wpm(typed, elapsed):
         elapsed: an amount of time in seconds
 
     >>> wpm('hello friend hello buddy hello', 15)
+   
     24.0
     >>> wpm('0123456789',60)
     2.0
     """
+    #numbers of words (len of string divided by 5)
+    #----------------------------------------------
+    #numbers of seconds divided by 60
+    return (len(typed) / 5) / (elapsed / 60)
+
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
