@@ -452,4 +452,20 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    
+    # Expected: 24.0
+    print(wpm("hello friend hello buddy hello", 15))
+
+    # Expected: 2.0
+    print(wpm("0123456789", 60))
+
+    # Expected: 4.0
+    print(wpm("I am glad!", 30))
+
+    # Expected: 1.0
+    print(wpm("abcde", 60))
+
+    # Expected: 1.2
+    print(wpm("a b", 30))
+
+    # Expected: 0.0
+    print(wpm("", 10))
