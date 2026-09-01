@@ -215,7 +215,7 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     smallest_word = ""
     for word in word_list:
         word_diff = diff_function(typed_word, word, limit)
-        if word_diff < limit and word_diff <= smallest_diff:
+        if word_diff <= limit and word_diff <= smallest_diff:
             if smallest_diff == word_diff:
                 prev_closest_word = word_list[smallest_word]
                 curr_candidate =  word_list[word]
