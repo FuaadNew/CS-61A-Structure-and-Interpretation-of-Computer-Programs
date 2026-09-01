@@ -143,11 +143,11 @@ def wpm(typed, elapsed):
     #numbers of words (len of string divided by 5)
     #----------------------------------------------
     #numbers of seconds divided by 60
-    return (len(typed) / 5) / (elapsed / 60)
+  
 
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    return (len(typed) / 5) / (elapsed / 60)
     # END PROBLEM 4
 
 
