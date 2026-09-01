@@ -208,7 +208,23 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     'testing'
     """
     # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
+    word_list = {x:i for i,x in enumerate(word_list)} 
+    if typed_word in word_list:
+        return typed_word
+    smallest_diff = float('inf')
+    smallest_word = ""
+    for word in word_list:
+        word_diff = diff_function(typed_word, word, limit)
+        if word_diff < limit and word_diff <= smallest_diff:
+            if smallest_diff == word_diff:
+                prev_closest_word = word_list[smallest_word]
+                curr_candidate =  word_list[word]
+                if curr_candidate < prev_closest_word:
+                    smallest_word = word
+            else:
+                smallest_word = word
+    return smallest_word if snallest_word != "" else typed_word
+
     # END PROBLEM 5
 
 
