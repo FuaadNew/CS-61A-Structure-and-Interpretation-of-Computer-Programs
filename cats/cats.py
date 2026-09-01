@@ -223,7 +223,7 @@ def autocorrect(typed_word, word_list, diff_function, limit):
                     smallest_word = word
             else:
                 smallest_word = word
-    return smallest_word if snallest_word != "" else typed_word
+    return smallest_word if smallest_word != "" else typed_word
 
     # END PROBLEM 5
 
