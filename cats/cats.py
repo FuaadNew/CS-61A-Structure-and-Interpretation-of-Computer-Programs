@@ -462,25 +462,4 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    # Expected: cat
-    print(autocorrect("cat", ["cat", "dog"], lambda w1, w2, limit: 10, 1))
-
-    # Expected: butter
-    print(autocorrect("hwllo", ["butter", "hello", "potato"],
-                      lambda w1, w2, limit: 10, 20))
-
-    # Expected: testing
-    print(autocorrect("tosting", ["testing", "asking", "fasting"],
-                      lambda w1, w2, limit: 1 if w1[0] != w2[0] else 0, 10))
-
-    # Expected: hello
-    print(autocorrect("hippo", ["cat", "hippopotamus", "hello"],
-                      lambda w1, w2, limit: abs(len(w1) - len(w2)), 10))
-
-    # Expected: hwllo
-    print(autocorrect("hwllo", ["butter", "hello", "potato"],
-                      lambda w1, w2, limit: 10, 5))
-
-    # Expected: first
-    print(autocorrect("word", ["first", "second", "third"],
-                      lambda w1, w2, limit: 1, 5))
+    
