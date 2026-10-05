@@ -245,7 +245,12 @@ def furry_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    res = len(source) - len(typed)
+    for i in range(len(typed)):
+        if typed[i] != source[i]:
+            res+=1
+    return res
+
     # END PROBLEM 6
 
 
