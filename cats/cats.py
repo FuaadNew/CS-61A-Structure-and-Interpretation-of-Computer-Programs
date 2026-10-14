@@ -246,10 +246,11 @@ def furry_fixes(typed, source, limit):
     """
     # BEGIN PROBLEM 6
     res = len(source) - len(typed)
-    for i in range(len(typed)):
-        if typed[i] != source[i]:
-            res+=1
-    return res
+    if typed:
+        for i in range(min(len(typed), len(source))):
+            if typed[i] != source[i]:
+                res+=1
+    return abs(res)
 
     # END PROBLEM 6
 
@@ -467,4 +468,29 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    
+    # Expected: 1
+    print(furry_fixes("nice", "rice", 10))
+
+    # Expected: 2
+    print(furry_fixes("range", "rungs", 10))
+
+    # Expected: 3
+    print(furry_fixes("pill", "pillage", 10))
+
+    # Expected: 3
+    print(furry_fixes("goodbye", "good", 10))
+
+    # Expected: 5
+    print(furry_fixes("roses", "arose", 10))
+
+    # Expected: 5
+    print(furry_fixes("rose", "hello", 10))
+
+    # Expected: 0
+    print(furry_fixes("cat", "cat", 10))
+
+    # Expected: 3
+    print(furry_fixes("", "cat", 10))
+
+    # Expected: True
+    print(furry_fixes("rosesabcdefghijklm", "arosenopqrstuvwxyz", 2) > 2)
