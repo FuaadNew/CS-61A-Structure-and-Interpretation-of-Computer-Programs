@@ -244,8 +244,18 @@ def furry_fixes(typed, source, limit):
     >>> furry_fixes("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
     5
     """
-    if i == len(typed) and j == len(source):
-        return 0
+    def dfs(i,j):
+        if i == len(typed) and j == len(source):
+            return 0
+        if i == len(typed) and j < len(source):
+            return len(source) - len(typed)
+        if j == len(source) and i < len(typed):
+            return len(typed) - i
+        if typed[i] != source[i]:
+            return 1 + dfs(i + 1, j + 1)
+        return dfs(i + 1, j + 1)
+    return dfs(0,0)
+
     
 
     # END PROBLEM 6
