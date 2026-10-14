@@ -244,13 +244,9 @@ def furry_fixes(typed, source, limit):
     >>> furry_fixes("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
     5
     """
-    # BEGIN PROBLEM 6
-    res = len(source) - len(typed)
-    if typed:
-        for i in range(min(len(typed), len(source))):
-            if typed[i] != source[i]:
-                res+=1
-    return abs(res)
+    if i == len(typed) and j == len(source):
+        return 0
+    
 
     # END PROBLEM 6
 
