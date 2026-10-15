@@ -282,7 +282,7 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, 'Remove this line'
+    
     if ___________: # Base cases should go here, you may add more base cases as needed.
         # BEGIN
         "*** YOUR CODE HERE ***"
@@ -293,11 +293,11 @@ def minimum_mewtations(typed, source, limit):
         "*** YOUR CODE HERE ***"
         # END
     else:
-        add = ... # Fill in these lines
+        add =  minimum_mewtations(i + 1, )
         remove = ...
         substitute = ...
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        return min(add, remove, substitute)
         # END
 
 
@@ -478,29 +478,4 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    # Expected: 1
-    print(furry_fixes("nice", "rice", 10))
-
-    # Expected: 2
-    print(furry_fixes("range", "rungs", 10))
-
-    # Expected: 3
-    print(furry_fixes("pill", "pillage", 10))
-
-    # Expected: 3
-    print(furry_fixes("goodbye", "good", 10))
-
-    # Expected: 5
-    print(furry_fixes("roses", "arose", 10))
-
-    # Expected: 5
-    print(furry_fixes("rose", "hello", 10))
-
-    # Expected: 0
-    print(furry_fixes("cat", "cat", 10))
-
-    # Expected: 3
-    print(furry_fixes("", "cat", 10))
-
-    # Expected: True
-    print(furry_fixes("rosesabcdefghijklm", "arosenopqrstuvwxyz", 2) > 2)
+    
