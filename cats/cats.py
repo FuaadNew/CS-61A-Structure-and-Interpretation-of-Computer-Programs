@@ -283,22 +283,23 @@ def minimum_mewtations(typed, source, limit):
     3
     """
     
-    if ___________: # Base cases should go here, you may add more base cases as needed.
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    else:
-        add =  minimum_mewtations(i + 1, )
-        remove = ...
-        substitute = ...
-        # BEGIN
-        return min(add, remove, substitute)
-        # END
+    def dfs(i, j, count):
+        if count > limit:
+            return float('inf')
+        if i == len(typed):
+            return count + (len(source) - j)
+        if j == len(source):
+            return count +( len(typed) - i)
+        if typed[i] == source[j]:
+           res = dfs(i + 1, j + 1, count)
+        else:
+            add = dfs(i, j + 1, count + 1)
+            remove = dfs(i + 1, j, count + 1)
+            substitute = dfs(i + 1, j + 1, count + 1)
+            res = min(add,remove, substitute)
+        return res
+    return dfs(0,0, 0)
+
 
 
 # Ignore the line below
@@ -478,4 +479,32 @@ def run(*args):
 
 
 if __name__ == "__main__":
-    
+    # Expected: 2
+    print(minimum_mewtations("cats", "scat", 10))
+
+    # Expected: 2
+    print(minimum_mewtations("purng", "purring", 10))
+
+    # Expected: 3
+    print(minimum_mewtations("ckiteus", "kittens", 10))
+
+    # Expected: 1
+    print(minimum_mewtations("itten", "kitten", 10))
+
+    # Expected: 1
+    print(minimum_mewtations("scat", "cat", 10))
+
+    # Expected: 1
+    print(minimum_mewtations("cat", "cut", 10))
+
+    # Expected: 3
+    print(minimum_mewtations("", "cat", 10))
+
+    # Expected: 3
+    print(minimum_mewtations("cat", "", 10))
+
+    # Expected: 0
+    print(minimum_mewtations("same", "same", 0))
+
+    # Expected: True
+    print(minimum_mewtations("ckiteus", "kittens", 2) > 2)
